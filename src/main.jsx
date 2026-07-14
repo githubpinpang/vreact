@@ -3,9 +3,28 @@ import {createRoot} from 'react-dom/client';
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 
+import { Routes, Route } from "react-router-dom";
+import Admin from "./Admin.jsx";
+
+import { BrowserRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 import mebaBurger from './assets/meba.png';
 import avatarImg from './assets/avatar.png';
 import { use } from "react";
+
+  // Socials Import
+  import {
+  FaFacebook,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
+  FaYoutube,
+  FaLinkedin,
+  FaTiktok,
+  FaShoppingCart
+} from "react-icons/fa";
 
 console.log("🔥 main.jsx is running");
 
@@ -22,6 +41,7 @@ const Cards = ({ foods, setFoods }) =>{
     width: '300px',
     height: '270px',
     backgroundColor: 'yellow',
+    boxShadow: '5px 5px 5px red'
 
    // alignItems: 'center'
   };
@@ -78,51 +98,70 @@ const Cards = ({ foods, setFoods }) =>{
 
 function Hello(){
 
+const navigate = useNavigate();
+
   const first = {
     display: 'flex',
     //gap: '20px'
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderBottom: "3px solid black",
+   
 
   };
    const logos = {
     margin: '10px',
     width: '300px',
-    height:"300px",
+    height:"200px",
     backgroundColor: "pink",
     borderRadius: '20px',
     textAlign: 'center',
+    border: "none"
    };
 
    const profile = {
     
-    width: '600px',
-    height:"300px",
+    width: '500px',
+    height:"200px",
     backgroundColor: "yellow",
      borderRadius: '20px',
      marginRight: '40px',
-     display: 'flex'
+     display: 'flex',
+     border: "none"
    };
 
    const meba = {
    //borderRadius: '50%'
    width: '200px',
-   height: '200px',
+   height: '150px',
    padding: "20px"
    };
 
+   const rightSide ={
+    display: 'flex',
+    gap:'5px'
+   }
+
    const avatar = {
     borderRadius: '50%',
-    height:'200px',
-    width:'200px',
+    height:'100px',
+    width:'100px',
     padding: '30px'
    };
 
    const options ={
     height: '50px',
     width: '250px',
-   marginTop: '70px',
-   marginRight:'5px'
+   marginTop: '50px',
+   marginRight:'5px',
+   borderRadius: '10px'
    };
+
+   const cart = {
+    marginTop: '50px',
+    height: '200px',
+    width: '250px',
+    // onClick: ''
+   }
                     // menu styles
    const second ={
 
@@ -149,7 +188,11 @@ function Hello(){
     width: '150px',
     borderRadius: '15px',
     marginLeft: '80px',
-    marginTop: '10px'
+    marginTop: '10px',
+    borderRadius: '15px',
+    borderBottom: "3px solid black",
+    boxShadow: '5px 5px 5px red',
+    fontWeight: 'bold'
    }
 
    const menuTitle = {
@@ -158,7 +201,8 @@ function Hello(){
     border: 'none',
     marginTop: '-60px', 
     borderRadius: '15px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    borderBottom: "5px solid black",
    }
 
     const table ={
@@ -183,8 +227,33 @@ function Hello(){
    display: "grid",
    gridTemplateColumns: "repeat(5, 1fr)",
    gap: '30px',
-    padding: "15px",
+   padding: "15px",
   };
+
+  const cartDiv ={
+    height: '800px',
+    width:'300px',
+    // display:'none',
+    backgroundColor: 'pink',
+    borderRadius: '10px',
+    position: 'absolute',
+    right: '15px',
+    top: '200px',
+    boxShadow: '5px 5px 5px 5px grey',
+    borderTop: '5px solid grey',
+    textAlign: 'center'
+  }
+
+  const socialIcons ={
+    display: 'flex',
+    gap: '20px',
+    justifyContent: 'center',
+    marginTop: '15px'
+  }
+
+  
+
+  const [hover, setHover] = useState(false);
 
    const footer ={
     textAlign: 'center',
@@ -192,6 +261,8 @@ function Hello(){
 
    const [foods, setFoods] = useState([]);
    const [selectedCategory, setSelectedCategory] = useState("");
+   const [showCart, setShowCart] = useState(false);
+   const [cartItems, setCartItems] = useState([]);
 
 
    const filterMenu = (category)=>{
@@ -202,6 +273,9 @@ function Hello(){
   ? foods.filter((food) => food.Category === selectedCategory)
   : foods;
 
+  const addToCart = (food) => {
+  setCartItems(prev => [...prev, food]);
+};
 
     return (  
       <>
@@ -215,6 +289,7 @@ function Hello(){
 
     </div>
 
+<div className="rightSide" style={rightSide}>
     <div className="profile" style={profile}>
       <img src={avatarImg} className="avatar" style={avatar}/>
 
@@ -227,21 +302,67 @@ function Hello(){
       </select>
     </div> 
 
+    <div className="cart" style={cart}>
+       <nav>
+      <FaShoppingCart 
+      onClick={() => setShowCart(!showCart)}
+      style={{
+        color: "green",
+        fontSize: "35px",
+        cursor: "pointer",
+        height:'50px',
+        width: '80px'
+      }}
+      />
+      <span>Cart</span>
+    </nav>
+   
+    </div>
+    <div>
+      <button onClick={() => navigate("/Admin")} > Admin Page</button>
+    </div>
+</div>
   </div>  
                    {/* Menu Divs */}
   <div className="second" style={second}>
 
     <div className="menu" style={menu}>
-       <button style={menuTitle}>Menu</button>
-      <button style={Menus}  onClick={() => filterMenu("")} >All</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={Menus}  onClick={() => filterMenu("Burger")} >Burger</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={Menus}  onClick={() => filterMenu("Pizza")} >Pizza</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={Menus}  onClick={() => filterMenu("Juice")} >Juice</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={Menus}  onClick={() => filterMenu("Sweets")} >Sweets</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={Menus}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br />
+       <button style={{
+        ...menuTitle, color: hover ? "red" : "black",transition: "0.3s",
+        }}
+         onMouseEnter={() => setHover(true)}
+         onMouseLeave={() => setHover(false)}
+        >Menu</button>
+
+      <button style={{
+        ...Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("")} 
+         onMouseEnter={() => setHover(true)}
+         onMouseLeave={() => setHover(false)}
+        >All</button> <br /><br /> <br /><br /> <br /><br />
+      <button style={{...Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("Burger")} 
+         onMouseEnter={() => setHover(true)}
+         onMouseLeave={() => setHover(false)}
+        >Burger</button> <br /><br /> <br /><br /> <br /><br />
+
+      <button style={{...Menus, color:hover ? 'red' : 'black' }}  onClick={() => filterMenu("Pizza")} 
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        >Pizza</button> <br /><br /> <br /><br /> <br /><br />
+
+      <button style={{...Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        >Juice</button> <br /><br /> <br /><br /> <br /><br />
+
+      <button style={{...Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Sweets")} 
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        >Sweets</button> <br /><br /> <br /><br /> <br /><br />
+      <button style={{Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br />
     </div>
 
-    <div className="table" style={table}>
+    
+  <div className="table" style={table}>
      <Cards foods={foods} setFoods={setFoods} />
 
      <div className="menuList" style={menuList}>
@@ -254,25 +375,82 @@ function Hello(){
           alt={food.Name}
           width="100"
           height="100"
+          style={{ borderRadius: "10px" }}
         />
       )}
       
       <p>{food.Price}</p>
       {/* <p>{food.Category}</p> */}
-      <button>Add to Cart</button>
 
+
+    {filteredFoods.map((food) => (
+  <div key={food.id}>
+    <h3>{food.Name}</h3>
+
+    <button onClick={() => addToCart(food)}>
+      Add to Cart
+    </button>
+  </div>
+))}
        </div>
        ))}
 
      </div>
     </div>
+
+  {/* <div className="cartDiv" style={cartDiv}> */}
+     {/* <span>Cart</span> */}
+     {showCart && (
+  <div className="cartDiv" style={cartDiv}>
+    <h2>Shopping Cart</h2>
+   {cartItems.length === 0 ? (
+  <p>Your cart is empty.</p>
+) : (
+  cartItems.map((item, index) => (
+    <div key={index}>
+      <h4>{item.Name}</h4>
+      <p>${item.Price}</p>
+
+      {item.Image && (
+        <img
+          src={URL.createObjectURL(item.Image)}
+          alt={item.Name}
+          width="70"
+          height="70"
+        />
+      )}
+    </div>
+  ))
+)}
+  </div>
+)}
+  
   </div>
 
                   {/* Footer Section */}
   <div>
     <footer className="footer" style={footer}>
-      All Right Reserved, &copy; V's Business
+      
+       <div style={socialIcons}>
+    <a href="https://facebook.com" target="_blank" rel="noreferrer">
+      <FaFacebook size={30} />
+    </a>
+
+    <a href="https://instagram.com" target="_blank" rel="noreferrer">
+      <FaInstagram size={30} />
+    </a>
+
+    <a href="https://t.me/yourusername" target="_blank" rel="noreferrer">
+      <FaTelegram size={30} />
+    </a>
+
+     <a href="https://tiktok.com" target="_blank" rel="noreferrer">
+      <FaTiktok size={30} />
+    </a>
+  </div>
+                     All Right Reserved, &copy; V's Business
     </footer>
+    
     </div>                
     </>
   )
@@ -281,7 +459,17 @@ function Hello(){
 
 createRoot(document.getElementById('root')).render(
    <React.StrictMode>
-    <Hello />
+    <BrowserRouter>
+    <Routes> 
+      <Route>
+         <Route path="/" element={<Hello />} />
+         <Route path="/admin" element={<Admin />} />
+      </Route>
+      
+    </Routes>
+    
+    </BrowserRouter>
+   
     </React.StrictMode>
 );
 
