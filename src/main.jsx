@@ -1,10 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {createRoot} from 'react-dom/client';
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 
 import { Routes, Route } from "react-router-dom";
 import Admin from "./Admin.jsx";
+import Menu from "./menu.jsx";
+import Home  from "./home.jsx";
+import Users from "./users.jsx";
+import Orders from "./orders.jsx";
+
 
 import { BrowserRouter } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +34,7 @@ import { use } from "react";
 console.log("🔥 main.jsx is running");
 
 
-const Cards = ({ foods, setFoods }) =>{
+const Cards = ({ foods, setFoods, fetchFoods }) =>{
 
   const addFood = {
     // marginLeft: '50px',
@@ -53,27 +58,53 @@ const Cards = ({ foods, setFoods }) =>{
 
  
  
-  const addFoodItem = () => {
+  const addFoodItem = async () => {
+
+
+    const formData = new FormData();
+
     console.log("Name", Name);
     console.log("Price", Price);
     console.log("Category", Category);
     console.log("Image", Image);
 
-    const addFood = {
-      id: Date.now(),
-      Name,
-      Price,
-      Category,
-      Image
-    };
+    formData.append("Name", Name);
+    formData.append("Price", Price);
+    formData.append("Category", Category);
+    formData.append("Image", Image);
+
+    // const addFood = {
+    //   id: Date.now(),
+    //   Name,
+    //   Price,
+    //   Category,
+    //   Image
+    // };
+    
+   try {
+     const response = await fetch("http://localhost:5000/food/API/fooditem", {method: "POST", body: formData} );
 
 
-      setFoods([...foods, addFood]);
-   setName("");
+          await response.json(); // Optional: reads the response
+
+          await fetchFoods();
+
+      // setFoods([...foods, addFood]);
+
+    setName("");
     setPrice("");
     setCategory("");
     setImage("");
 
+    alert("your Item saved succesfully"); 
+
+   } catch (error) {
+     console.error(error);
+     alert("Couldn't add Food!");
+    
+   }
+
+   
   }
 
   return(
@@ -207,12 +238,14 @@ const navigate = useNavigate();
 
     const table ={
     width: '1500px',
-    height: '1000px',
+    // minHeight: '1000px',
+    maxHeight: "1000px",
     borderRadius: '20px',
     backgroundColor: 'grey',
     display: 'flex',
     flexDirection: 'column', 
-    alignItems: 'center'
+    alignItems: 'center',
+    overflowY: "auto"
    };
 
   const menuList ={
@@ -228,10 +261,13 @@ const navigate = useNavigate();
    gridTemplateColumns: "repeat(5, 1fr)",
    gap: '30px',
    padding: "15px",
+  //  overflowY: "auto"
   };
 
   const cartDiv ={
-    height: '800px',
+    minHeight: '800px',
+    maxHeight: '100vh',
+    overflowY: 'auto',
     width:'300px',
     // display:'none',
     backgroundColor: 'pink',
@@ -251,7 +287,31 @@ const navigate = useNavigate();
     marginTop: '15px'
   }
 
-  
+
+  const signUp = {
+    padding: '60px'
+  }
+
+  const overlayStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000
+}
+
+const modalStyle = {
+    width: "350px",
+    background: "white",
+    padding: "25px",
+    borderRadius: "10px",
+    textAlign: "center"
+}
 
   const [hover, setHover] = useState(false);
 
@@ -260,9 +320,31 @@ const navigate = useNavigate();
    };
 
    const [foods, setFoods] = useState([]);
+
    const [selectedCategory, setSelectedCategory] = useState("");
    const [showCart, setShowCart] = useState(false);
    const [cartItems, setCartItems] = useState([]);
+   const [signIn, setSignIn] = useState(false);
+
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+
+   const fetchFoods = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/food/API/foods");
+
+    const data = await response.json();
+
+    setFoods(data);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchFoods();
+}, []);
 
 
    const filterMenu = (category)=>{
@@ -275,7 +357,59 @@ const navigate = useNavigate();
 
   const addToCart = (food) => {
   setCartItems(prev => [...prev, food]);
+
+
+   setShowCart(true);
 };
+
+ const login = async () => {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/Vs/API/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    Email: email,
+                    Password : password
+                })
+            }
+        );
+       console.log(email);
+       console.log(password);
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message);
+            return;
+        }
+
+        // Save token and role
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.User.role);
+
+        setSignIn(false);
+
+        // Redirect according to role
+        if (data.User.role === "admin") {
+            navigate("/admin");
+        } else {
+            navigate("/");
+        }
+
+    } catch (error) {
+
+        console.log(error);
+        alert("Login failed");
+
+    }
+
+};
+
 
     return (  
       <>
@@ -283,7 +417,18 @@ const navigate = useNavigate();
 
     <div className="logos" style={logos}>
 
-    <img src={mebaBurger} className="meba" style={meba}/> <br />
+    <img src={mebaBurger} className="meba" style={meba}
+    style={{
+    ...meba,
+    transition: "transform 0.3s ease"
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = "scale(1.1) rotate(5deg)";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = "scale(1) rotate(0deg)";
+  }}
+    /> <br />
     <h4>Meba Burger</h4>
 
 
@@ -318,8 +463,8 @@ const navigate = useNavigate();
     </nav>
    
     </div>
-    <div>
-      <button onClick={() => navigate("/Admin")} > Admin Page</button>
+    <div style={signUp}>
+      <button onClick={() => setSignIn(true)} > SignUp/LogIn</button>
     </div>
 </div>
   </div>  
@@ -363,37 +508,37 @@ const navigate = useNavigate();
 
     
   <div className="table" style={table}>
-     <Cards foods={foods} setFoods={setFoods} />
+
+
+           <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} />
 
      <div className="menuList" style={menuList}>
         {filteredFoods.map((food) => (
-    <div key={food.id}>
+    <div key={food._id}>
        <h3>{food.Name}</h3>
        {food.Image && (
-        <img
-          src={URL.createObjectURL(food.Image)}
-          alt={food.Name}
-          width="100"
-          height="100"
-          style={{ borderRadius: "10px" }}
-        />
+         <img
+        src={`http://localhost:5000/uploads/${food.Image}`}
+        width="150"
+        height="150"
+        style={{borderRadius: "10px"}}
+      />
       )}
       
       <p>{food.Price}</p>
+       <p>{food.Name}</p>
       {/* <p>{food.Category}</p> */}
 
 
-    {filteredFoods.map((food) => (
-  <div key={food.id}>
-    <h3>{food.Name}</h3>
+ 
 
     <button onClick={() => addToCart(food)}>
-      Add to Cart
+      Order
     </button>
   </div>
 ))}
-       </div>
-       ))}
+       
+       
 
      </div>
     </div>
@@ -409,16 +554,17 @@ const navigate = useNavigate();
   cartItems.map((item, index) => (
     <div key={index}>
       <h4>{item.Name}</h4>
-      <p>${item.Price}</p>
+      <p>{`Price: ${item.Price} ETB`}</p>
 
       {item.Image && (
         <img
-          src={URL.createObjectURL(item.Image)}
-          alt={item.Name}
-          width="70"
-          height="70"
+           src={`http://localhost:5000/uploads/${item.Image}`}
+           alt={item.Name}
+           width="70"
+           height="70" 
         />
-      )}
+      )} <br /> <br />
+      <button> Checkout </button>
     </div>
   ))
 )}
@@ -426,6 +572,49 @@ const navigate = useNavigate();
 )}
   
   </div>
+
+  {signIn && (
+    <div style={overlayStyle}>
+        <div style={modalStyle}>
+
+            <h2>Login</h2>
+
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+             onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <br /><br />
+
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br /><br />
+
+            <button
+            onClick={login}
+            >Login</button>
+
+            <button
+                onClick={() => setSignIn(false)}
+                style={{ marginLeft: "10px" }}
+            >
+                Close
+            </button>
+
+        </div>
+    </div>
+)}
+
+
+
+
 
                   {/* Footer Section */}
   <div>
@@ -448,12 +637,15 @@ const navigate = useNavigate();
       <FaTiktok size={30} />
     </a>
   </div>
-                     All Right Reserved, &copy; V's Business
+                     All Right Reserved, &copy; Powered by V's Business
     </footer>
     
     </div>                
     </>
   )
+
+ 
+
    
 }
 
@@ -463,8 +655,13 @@ createRoot(document.getElementById('root')).render(
     <Routes> 
       <Route>
          <Route path="/" element={<Hello />} />
-         <Route path="/admin" element={<Admin />} />
+         <Route path="/admin" element={<Admin />} >
+         <Route index element={<Home />} />
+         <Route path="menu" element={<Menu />} />
+         <Route path="users" element={<Users />} />
+         <Route path="orders" element={<Orders />} />
       </Route>
+       </Route>
       
     </Routes>
     
