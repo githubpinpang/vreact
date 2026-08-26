@@ -76,7 +76,8 @@ export default function Users(){
     
     const fetchAdmins = async () => {
         try {
-            const response = await fetch("http://localhost:5000/Vs/API/admins");
+            // const response = await fetch("http://localhost:5000/Vs/API/admins");
+            const response = await fetch("https://meba-api.onrender.com/Vs/API/admins");
             const data = await response.json();
 
             setAdmins(data);
