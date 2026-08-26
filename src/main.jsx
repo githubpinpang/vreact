@@ -199,6 +199,7 @@ const navigate = useNavigate();
     display: 'flex',
     marginTop: '20px',
     gap: '25px',
+    padding: "30px"
    };
    
    const menu ={
@@ -208,22 +209,25 @@ const navigate = useNavigate();
     borderRadius: '20px',
     marginLeft: '20px',
     //padding: '30px',
-    border: 'none'
-    
+    border: 'none',
+    textAlign: "center"
    
    };
 
    const Menus ={
     backgroundColor: 'pink',
     height: '50px',
-    width: '150px',
+    width: "100%",
+    maxWidth: '150px',
     borderRadius: '15px',
-    marginLeft: '80px',
+    padding: "center",
+    // marginLeft: '80px',
     marginTop: '10px',
     borderRadius: '15px',
-    borderBottom: "3px solid black",
+   // borderBottom: "3px solid black",
     boxShadow: '5px 5px 5px red',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    //"boxSizing": "border-box"
    }
 
    const menuTitle = {
@@ -445,7 +449,7 @@ useEffect(() => {
         <option value="">Choose an Action</option>
         <option value="apple">Profile</option>
         <option value="banana">Banana</option>
-        <option value="orange">Logout</option>
+        <option value="orange" >Logout</option>
       </select>
     </div> 
 
