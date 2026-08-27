@@ -328,6 +328,7 @@ const modalStyle = {
    const [selectedCategory, setSelectedCategory] = useState("");
    const [showCart, setShowCart] = useState(false);
    const [cartItems, setCartItems] = useState([]);
+
    const [signIn, setSignIn] = useState(false);
 
    const [email, setEmail] = useState("");
@@ -524,7 +525,9 @@ useEffect(() => {
        <h3>{food.Name}</h3>
        {food.Image && (
          <img
-        src={`http://localhost:5000/uploads/${food.Image}`}
+        // src={`http://localhost:5000/uploads/${food.Image}`}
+        src={` https://meba-api.onrender.com/uploads/{food.Image}`}
+        // https://meba-api.onrender.com/food/API/fooditem
         width="150"
         height="150"
         style={{borderRadius: "10px"}}
