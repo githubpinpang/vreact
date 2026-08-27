@@ -82,7 +82,8 @@ const Cards = ({ foods, setFoods, fetchFoods }) =>{
     // };
     
    try {
-     const response = await fetch("http://localhost:5000/food/API/fooditem", {method: "POST", body: formData} );
+    // const response = await fetch("http://localhost:5000/food/API/fooditem", {method: "POST", body: formData} );
+       const response = await fetch("https://meba-api.onrender.com/food/API/fooditem", {method: "POST", body: formData} );
 
 
           await response.json(); // Optional: reads the response
@@ -336,7 +337,9 @@ const modalStyle = {
 
    const fetchFoods = async () => {
   try {
-    const response = await fetch("http://localhost:5000/food/API/foods");
+   // const response = await fetch("http://localhost:5000/food/API/foods");
+      const response = await fetch("https://meba-api.onrender.com/food/API/foods");
+
 
     const data = await response.json();
 
@@ -567,7 +570,8 @@ useEffect(() => {
 
       {item.Image && (
         <img
-           src={`http://localhost:5000/uploads/${item.Image}`}
+           //src={`http://localhost:5000/uploads/${item.Image}`}
+           src={`https://meba-api.onrender.com/${item.Image}`}
            alt={item.Name}
            width="70"
            height="70" 
