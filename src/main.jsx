@@ -571,7 +571,7 @@ useEffect(() => {
       {item.Image && (
         <img
            //src={`http://localhost:5000/uploads/${item.Image}`}
-           src={`https://meba-api.onrender.com/${item.Image}`}
+           src={`https://meba-api.onrender.com/uploads/${item.Image}`}
            alt={item.Name}
            width="70"
            height="70" 
