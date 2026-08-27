@@ -110,7 +110,7 @@ const Cards = ({ foods, setFoods, fetchFoods }) =>{
 
   return(
      <>
-  <div className="addFood" style={addFood}>
+  {/* <div className="addFood" style={addFood}>
     Name: <input type="text" placeholder="Food Name" value={Name} onChange={(e) => setName(e.target.value)}/> <br /> <br />
     Price:  <input type="text" placeholder="Price" value={Price} onChange={(e) => setPrice(e.target.value)}/>  <br /> <br />
     Category: <select value={Category} onChange={(e)=> setCategory(e.target.value)}>
@@ -123,7 +123,7 @@ const Cards = ({ foods, setFoods, fetchFoods }) =>{
     Image: <input type="file" onChange={(e) => setImage(e.target.files[0])}/><br /> <br />
         <button onClick={addFoodItem}>ADD</button>
 
-  </div>
+  </div> */}
   </>)
 }
 
@@ -246,7 +246,8 @@ const navigate = useNavigate();
     // minHeight: '1000px',
     maxHeight: "1000px",
     borderRadius: '20px',
-    backgroundColor: 'grey',
+   // backgroundColor: 'grey',
+    backgroundColor: "#F28C00",
     display: 'flex',
     flexDirection: 'column', 
     alignItems: 'center',
@@ -256,7 +257,8 @@ const navigate = useNavigate();
   const menuList ={
    alignSelf: 'stretch',
    flex: 1,
-   backgroundColor: 'red',
+ //  backgroundColor: 'red',
+   backgroundColor: "#6B3E1E",
    marginBottom: '5px',
    marginLeft: '10px',
    marginTop: '10px',
@@ -520,7 +522,7 @@ useEffect(() => {
   <div className="table" style={table}>
 
 
-           <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} />
+            <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} /> 
 
      <div className="menuList" style={menuList}>
         {filteredFoods.map((food) => (
