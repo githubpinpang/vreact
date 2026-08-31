@@ -293,10 +293,13 @@ const navigate = useNavigate();
    marginRight: '5px',
    borderRadius: '15px',
    display: "grid",
-   gridTemplateColumns: "repeat(5, 1fr)",
+   //gridTemplateColumns: "repeat(5, 1fr)",
    gap: '30px',
    padding: "15px",
   //  overflowY: "auto"
+  //new
+  width: "100%",
+  gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
   };
 
   const cartDiv ={
