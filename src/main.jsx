@@ -215,18 +215,24 @@ const navigate = useNavigate();
     display: 'flex',
     marginTop: '20px',
     gap: '25px',
-    padding: "30px"
+    padding: "30px",
+    //new
+    width: "100%",
+     alignItems: "flex-start"
    };
    
    const menu ={
     width: '350px',
+   
     height: '1000px',
     backgroundColor: 'silver',
     borderRadius: '20px',
     marginLeft: '20px',
     //padding: '30px',
     border: 'none',
-    textAlign: "center"
+    textAlign: "center",
+    //new
+     minWidth: "320px",
    
    };
 
@@ -257,7 +263,7 @@ const navigate = useNavigate();
    }
 
     const table ={
-    width: '1500px',
+  // width: '1500px',
     // minHeight: '1000px',
     maxHeight: "1000px",
     borderRadius: '20px',
@@ -266,7 +272,14 @@ const navigate = useNavigate();
     display: 'flex',
     flexDirection: 'column', 
     alignItems: 'center',
-    overflowY: "auto"
+    overflowY: "auto",
+
+    //new
+   width: "auto",
+    flex: "1",
+  minWidth: "0",
+  maxWidth: "100%"
+
    };
 
   const menuList ={
