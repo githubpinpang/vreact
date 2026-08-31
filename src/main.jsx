@@ -139,6 +139,11 @@ const navigate = useNavigate();
     //gap: '20px'
     justifyContent: 'space-between',
     borderBottom: "3px solid black",
+    //new alignment
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: "15px",
+    padding: "10px"
    
 
   };
@@ -149,7 +154,9 @@ const navigate = useNavigate();
     backgroundColor: "pink",
     borderRadius: '20px',
     textAlign: 'center',
-    border: "none"
+    border: "none",
+    //new
+    maxWidth: "100%"
    };
 
    const profile = {
@@ -160,7 +167,9 @@ const navigate = useNavigate();
      borderRadius: '20px',
      marginRight: '40px',
      display: 'flex',
-     border: "none"
+     border: "none",
+     //new
+      maxWidth: "100%"
    };
 
    const meba = {
@@ -172,7 +181,11 @@ const navigate = useNavigate();
 
    const rightSide ={
     display: 'flex',
-    gap:'5px'
+    gap:'5px',
+    // Newly added
+    alignItems: "center",
+    flexWrap: "wrap",
+    maxWidth: "100%"
    }
 
    const avatar = {
