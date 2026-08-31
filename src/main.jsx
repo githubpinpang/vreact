@@ -133,6 +133,8 @@ function Hello(){
 const navigate = useNavigate();
 
   const first = {
+    //New line
+    width: "100%",
     display: 'flex',
     //gap: '20px'
     justifyContent: 'space-between',
