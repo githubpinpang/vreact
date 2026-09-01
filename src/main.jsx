@@ -533,13 +533,7 @@ useEffect(() => {
        <nav>
       <FaShoppingCart 
       onClick={() => setShowCart(!showCart)}
-      style={{
-        color: "green",
-        fontSize: "35px",
-        cursor: "pointer",
-        height:'50px',
-        width: '80px'
-      }}
+       className="cartIcon"
       />
       <span>Cart</span>
     </nav>
