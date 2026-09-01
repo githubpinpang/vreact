@@ -1,766 +1,970 @@
 /* =========================================================
-GLOBAL / DESKTOP BASE
+   GLOBAL
 ========================================================= */
 
 * {
   box-sizing: border-box;
-  }
+}
 
 html,
 body,
 #root {
-margin: 0;
-padding: 0;
-width: 100%;
-min-height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-overflow-x: hidden;
-font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
 }
 
 img {
-max-width: 100%;
+  max-width: 100%;
 }
 
+
 /* =========================================================
-HEADER
+   HEADER
 ========================================================= */
 
 .first {
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .logos {
-max-width: 100%;
-flex-shrink: 1;
+  max-width: 100%;
+  flex-shrink: 1;
 }
 
 .rightSide {
-flex: 1 1 auto;
-min-width: 0;
-max-width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .profile {
-max-width: 100%;
-min-width: 0;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .avatar {
-max-width: 100%;
-object-fit: contain;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .options {
-max-width: 100%;
+  max-width: 100%;
 }
 
 .cart {
-flex-shrink: 1;
-max-width: 100%;
+  flex-shrink: 1;
+  max-width: 100%;
 }
 
+
+/* =========================================================
+   CART CLOSE BUTTON
+========================================================= */
+
 .cartClose {
-   position: absolute;
-  top: 8px;
-  right: 8px;
+  position: absolute !important;
 
-  width: 38px;
-  height: 38px;
+  top: 8px !important;
+  right: 8px !important;
 
-  background: #ff0000;
-  color: #ffffff;
+  width: 38px !important;
+  height: 38px !important;
 
-  border: 3px solid #8b0000;
-  border-radius: 4px;
+  background: #ff0000 !important;
+  color: #ffffff !important;
 
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1;
+  border: 3px solid #8b0000 !important;
+  border-radius: 4px !important;
 
-  cursor: pointer;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
 
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+
+  z-index: 99999 !important;
 }
 
 .cartClose:hover {
-  background-color: darkred;
-  border-color: black;
+  background-color: darkred !important;
+  border-color: black !important;
+  transform: scale(1.05);
 }
 
+
 /* =========================================================
-MAIN CONTENT
+   MAIN CONTENT
 ========================================================= */
 
 .second {
-width: 100%;
-max-width: 100%;
-display: flex;
-align-items: flex-start;
-gap: 20px;
-overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  overflow: hidden;
 }
 
 .menu {
-flex: 0 1 350px;
-width: 350px;
-max-width: 100%;
-min-width: 0;
+  flex: 0 1 350px;
+
+  width: 350px;
+  max-width: 100%;
+
+  min-width: 0;
 }
 
 .table {
-flex: 1 1 0;
-width: 0;
-min-width: 0;
-max-width: 100%;
-overflow-x: hidden;
-overflow-y: auto;
+  flex: 1 1 0;
+
+  width: 0;
+
+  min-width: 0;
+  max-width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .menuList {
-width: 100%;
-max-width: 100%;
-display: grid;
-grid-template-columns: repeat(
-auto-fit,
-minmax(180px, 1fr)
-);
-gap: 20px;
+  width: 100%;
+  max-width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+
+  gap: 20px;
 }
 
+
 /* =========================================================
-FOOD CARDS
+   FOOD CARDS
 ========================================================= */
 
 .menuList > div {
-min-width: 0;
-max-width: 100%;
-overflow: hidden;
-text-align: center;
+  min-width: 0;
+  max-width: 100%;
+
+  overflow: hidden;
+
+  text-align: center;
 }
 
 .menuList img {
-max-width: 100%;
-height: auto;
-object-fit: cover;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: cover;
 }
 
+
 /* =========================================================
-CART
+   CART
 ========================================================= */
 
 .cartDiv {
-max-width: calc(100vw - 30px);
+  max-width: calc(100vw - 30px);
+
+  position: absolute;
 }
 
 .cartDiv img {
-max-width: 100%;
-object-fit: contain;
+  max-width: 100%;
+  object-fit: contain;
 }
 
+
 /* =========================================================
-LOGIN MODAL
+   LOGIN MODAL
 ========================================================= */
 
 .overlayStyle {
-padding: 15px;
+  padding: 15px;
 }
 
 .modalStyle {
-max-width: calc(100vw - 30px);
-width: 350px;
+  max-width: calc(100vw - 30px);
+  width: 350px;
 }
 
+
 /* =========================================================
-TABLET
-601px - 900px
+   TABLET
+   601px - 900px
 ========================================================= */
 
 @media (max-width: 900px) {
 
-/* ---------- HEADER ---------- */
+  /* ---------- HEADER ---------- */
 
-.first {
-padding: 15px !important;
+  .first {
+    padding: 15px !important;
+  }
+
+  .logos {
+    width: 250px !important;
+    height: auto !important;
+  }
+
+  .meba {
+    width: 180px !important;
+    height: auto !important;
+  }
+
+  .rightSide {
+    gap: 10px !important;
+  }
+
+  .profile {
+    width: 350px !important;
+    height: auto !important;
+
+    min-height: 150px;
+
+    margin-right: 0 !important;
+  }
+
+  .avatar {
+    width: 80px !important;
+    height: 80px !important;
+
+    padding: 15px !important;
+  }
+
+  .options {
+    width: 200px !important;
+    margin-top: 10px !important;
+  }
+
+  .cart {
+    width: 100px !important;
+    height: auto !important;
+
+    margin-top: 10px !important;
+  }
+
+  .signUp {
+    padding: 20px !important;
+  }
+
+
+  /* ---------- MAIN ---------- */
+
+  .second {
+    padding: 15px !important;
+
+    gap: 15px !important;
+
+    flex-direction: row !important;
+  }
+
+  .menu {
+    flex: 0 0 220px !important;
+
+    width: 220px !important;
+
+    min-height: auto !important;
+    height: auto !important;
+
+    margin-left: 0 !important;
+  }
+
+  .Menus {
+    width: 140px !important;
+  }
+
+  .table {
+    flex: 1 1 0 !important;
+
+    width: 0 !important;
+
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    min-height: 600px !important;
+  }
+
+  .menuList {
+    grid-template-columns:
+      repeat(auto-fit, minmax(150px, 1fr)) !important;
+
+    gap: 15px !important;
+
+    margin: 10px !important;
+
+    width: auto !important;
+
+    padding: 10px !important;
+  }
+
+  .menuList > div {
+    font-size: 14px;
+  }
+
+  .menuList img {
+    width: 130px;
+    height: 130px;
+  }
+
+
+  /* ---------- CART ---------- */
+
+  .cartDiv {
+    position: fixed !important;
+
+    top: 100px !important;
+    right: 15px !important;
+
+    width: 300px !important;
+
+    max-width: calc(100vw - 30px) !important;
+
+    max-height: 75vh !important;
+
+    min-height: auto !important;
+
+    z-index: 2000;
+  }
 }
 
-.logos {
-width: 250px !important;
-height: auto !important;
-}
-
-.meba {
-width: 180px !important;
-height: auto !important;
-}
-
-.rightSide {
-gap: 10px !important;
-}
-
-.profile {
-width: 350px !important;
-height: auto !important;
-min-height: 150px;
-margin-right: 0 !important;
-}
-
-.avatar {
-width: 80px !important;
-height: 80px !important;
-padding: 15px !important;
-}
-
-.options {
-width: 200px !important;
-margin-top: 10px !important;
-}
-
-.cart {
-width: 100px !important;
-height: auto !important;
-margin-top: 10px !important;
-}
-
-.signUp {
-padding: 20px !important;
-}
-
-/* ---------- MAIN ---------- */
-
-.second {
-padding: 15px !important;
-gap: 15px !important;
-}
-
-.menu {
-flex: 0 0 220px;
-width: 220px !important;
-min-height: auto !important;
-height: auto !important;
-margin-left: 0 !important;
-}
-
-.Menus {
-width: 140px !important;
-}
-
-.table {
-flex: 1 1 0;
-width: 0 !important;
-min-width: 0 !important;
-max-width: 100% !important;
-min-height: 600px !important;
-}
-
-.menuList {
-grid-template-columns:
-repeat(auto-fit, minmax(150px, 1fr)) !important;
-
-gap: 15px !important;
-margin: 10px !important;
-width: auto !important;
-padding: 10px !important;
-
-
-}
-
-.menuList > div {
-font-size: 14px;
-}
-
-.menuList img {
-width: 130px;
-height: 130px;
-}
-
-/* ---------- CART ---------- */
-
-.cartDiv {
-position: fixed !important;
-top: 100px !important;
-right: 15px !important;
-width: 300px !important;
-max-width: calc(100vw - 30px) !important;
-max-height: 75vh !important;
-min-height: auto !important;
-z-index: 2000;
-}
-}
 
 /* =========================================================
-PHONE
-600px AND BELOW
+   PHONE
+   600px AND BELOW
+
+   MENU + TABLE STAY SIDE-BY-SIDE
 ========================================================= */
 
 @media (max-width: 600px) {
 
-/* ---------- PAGE ---------- */
+  /* ---------- PAGE ---------- */
 
-body {
-overflow-x: hidden;
+  body {
+    overflow-x: hidden;
+  }
+
+
+  /* =======================================================
+     HEADER
+  ======================================================= */
+
+  .first {
+    width: 100% !important;
+
+    padding: 10px !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    justify-content: center !important;
+
+    gap: 10px !important;
+  }
+
+
+  /* ---------- LOGO ---------- */
+
+  .logos {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+
+    padding: 10px !important;
+
+    text-align: center;
+  }
+
+  .meba {
+    width: 160px !important;
+
+    max-width: 80% !important;
+
+    height: auto !important;
+  }
+
+
+  /* ---------- RIGHT SIDE ---------- */
+
+  .rightSide {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    justify-content: center !important;
+
+    gap: 10px !important;
+  }
+
+
+  /* ---------- PROFILE ---------- */
+
+  .profile {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    height: auto !important;
+
+    min-height: 100px !important;
+
+    margin: 0 !important;
+
+    padding: 10px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 10px !important;
+  }
+
+  .avatar {
+    width: 70px !important;
+    height: 70px !important;
+
+    padding: 5px !important;
+
+    flex-shrink: 0;
+  }
+
+  .options {
+    width: 100% !important;
+
+    max-width: 220px !important;
+
+    height: 45px !important;
+
+    margin: 0 !important;
+  }
+
+
+  /* ---------- CART ICON ---------- */
+
+  .cart {
+    width: 100% !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+
+    text-align: center;
+  }
+
+
+  /* ---------- SIGN UP ---------- */
+
+  .signUp {
+    width: 100% !important;
+
+    padding: 10px !important;
+
+    text-align: center;
+  }
+
+  .signUp button {
+    width: 90%;
+
+    max-width: 250px;
+
+    padding: 10px;
+  }
+
+
+  /* =======================================================
+     MENU + FOOD TABLE
+
+     IMPORTANT:
+     They remain SIDE-BY-SIDE
+  ======================================================= */
+
+  .second {
+    width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: flex-start !important;
+
+    gap: 8px !important;
+
+    padding: 8px !important;
+
+    margin-top: 10px !important;
+
+    overflow: visible !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     LEFT MENU
+  ======================================================= */
+
+  .menu {
+    flex: 0 0 90px !important;
+
+    width: 90px !important;
+
+    min-width: 90px !important;
+
+    max-width: 90px !important;
+
+    height: auto !important;
+
+    min-height: 500px !important;
+
+    margin: 0 !important;
+
+    padding: 8px !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* ---------- MENU TITLE ---------- */
+
+  .menuTitle {
+    width: 74px !important;
+
+    max-width: 74px !important;
+
+    height: 40px !important;
+
+    margin: 0 auto 10px auto !important;
+
+    padding: 0 !important;
+
+    font-size: 13px !important;
+  }
+
+
+  /* ---------- MENU BUTTONS ---------- */
+
+  .Menus {
+    width: 74px !important;
+
+    max-width: 74px !important;
+
+    height: 42px !important;
+
+    margin: 10px auto !important;
+
+    padding: 5px !important;
+
+    display: block !important;
+
+    font-size: 11px !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     FOOD TABLE
+  ======================================================= */
+
+  .table {
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    max-width: none !important;
+
+    min-height: 500px !important;
+
+    max-height: none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    overflow-x: hidden !important;
+
+    overflow-y: visible !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     FOOD GRID
+
+     2 COLUMNS ON PHONE
+  ======================================================= */
+
+  .menuList {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    margin: 8px 0 !important;
+
+    padding: 6px !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* ---------- FOOD CARD ---------- */
+
+  .menuList > div {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+
+    padding: 6px !important;
+
+    text-align: center;
+
+    overflow: hidden;
+  }
+
+
+  /* ---------- FOOD TITLE ---------- */
+
+  .menuList h3 {
+    font-size: 13px !important;
+
+    word-break: break-word;
+
+    margin: 5px 0 !important;
+  }
+
+
+  /* ---------- FOOD TEXT ---------- */
+
+  .menuList p {
+    font-size: 11px !important;
+
+    word-break: break-word;
+
+    margin: 5px 0 !important;
+  }
+
+
+  /* ---------- FOOD IMAGE ---------- */
+
+  .menuList img {
+    width: 100px !important;
+
+    height: 100px !important;
+
+    max-width: 100% !important;
+
+    object-fit: cover;
+  }
+
+
+  /* ---------- ORDER BUTTON ---------- */
+
+  .menuList button {
+    width: 90px !important;
+
+    max-width: 100%;
+
+    padding: 8px !important;
+
+    font-size: 12px !important;
+
+    cursor: pointer;
+  }
+
+
+  /* =======================================================
+     CART POPUP
+  ======================================================= */
+
+  .cartDiv {
+    position: fixed !important;
+
+    top: 80px !important;
+
+    left: 15px !important;
+
+    right: 15px !important;
+
+    width: auto !important;
+
+    max-width: none !important;
+
+    min-height: auto !important;
+
+    max-height: 80vh !important;
+
+    overflow-y: auto !important;
+
+    z-index: 9999;
+
+    padding: 15px !important;
+  }
+
+
+  /* ---------- CART CLOSE BUTTON ---------- */
+
+  .cartClose {
+    top: 8px !important;
+
+    right: 8px !important;
+
+    width: 38px !important;
+
+    height: 38px !important;
+
+    background: red !important;
+
+    color: white !important;
+
+    border: 3px solid darkred !important;
+
+    font-size: 22px !important;
+
+    font-weight: 900 !important;
+
+    z-index: 10000 !important;
+  }
+
+
+  /* =======================================================
+     LOGIN MODAL
+  ======================================================= */
+
+  .overlayStyle {
+    padding: 15px !important;
+  }
+
+  .modalStyle {
+    width: 100% !important;
+
+    max-width: 350px !important;
+
+    padding: 20px !important;
+  }
+
+  .modalStyle input {
+    width: 100%;
+
+    max-width: 100%;
+
+    height: 40px;
+
+    box-sizing: border-box;
+  }
+
+  .modalStyle button {
+    padding: 10px 15px;
+  }
+
+
+  /* =======================================================
+     SOCIAL ICONS
+  ======================================================= */
+
+  .socialIcons {
+    display: flex !important;
+
+    flex-wrap: wrap;
+
+    gap: 15px !important;
+
+    justify-content: center !important;
+
+    margin-top: 15px !important;
+  }
+
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  .footer {
+    width: 100% !important;
+
+    padding: 20px 10px !important;
+
+    text-align: center;
+
+    word-break: break-word;
+  }
 }
 
-/* =======================================================
-HEADER
-======================================================= */
-
-.first {
-width: 100% !important;
-padding: 10px !important;
-
-
-display: flex !important;
-flex-direction: column !important;
-
-align-items: stretch !important;
-justify-content: center !important;
-
-gap: 10px !important;
-
-
-}
-
-/* ---------- LOGO ---------- */
-
-.logos {
-width: 100% !important;
-max-width: 100% !important;
-height: auto !important;
-
-margin: 0 !important;
-padding: 10px !important;
-
-text-align: center;
-
-
-}
-
-.meba {
-width: 160px !important;
-max-width: 80% !important;
-height: auto !important;
-}
-
-/* ---------- RIGHT SIDE ---------- */
-
-.rightSide {
-width: 100% !important;
-max-width: 100% !important;
-
-
-display: flex !important;
-flex-direction: column !important;
-
-align-items: stretch !important;
-justify-content: center !important;
-
-gap: 10px !important;
-
-
-}
-
-/* ---------- PROFILE ---------- */
-
-.profile {
-width: 100% !important;
-max-width: 100% !important;
-
-
-height: auto !important;
-min-height: 100px !important;
-
-margin: 0 !important;
-padding: 10px !important;
-
-display: flex !important;
-align-items: center !important;
-justify-content: center !important;
-
-gap: 10px;
-
-
-}
-
-.avatar {
-width: 70px !important;
-height: 70px !important;
-
-
-padding: 5px !important;
-
-flex-shrink: 0;
-
-
-}
-
-.options {
-width: 100% !important;
-max-width: 220px !important;
-
-height: 45px !important;
-
-margin: 0 !important;
-
-
-}
-
-/* ---------- CART ---------- */
-
-.cart {
-width: 100% !important;
-height: auto !important;
-
-
-margin: 0 !important;
-
-text-align: center;
-
-
-}
-
-/* ---------- SIGN UP ---------- */
-
-.signUp {
-width: 100% !important;
-padding: 10px !important;
-
-
-text-align: center;
-
-
-}
-
-.signUp button {
-width: 90%;
-max-width: 250px;
-padding: 10px;
-}
-
-/* =======================================================
-MENU + FOOD TABLE
-======================================================= */
-
-.second {
-width: 100% !important;
-
-
-display: flex !important;
-flex-direction: column !important;
-
-align-items: stretch !important;
-
-gap: 15px !important;
-
-padding: 10px !important;
-margin-top: 10px !important;
-
-overflow: visible !important;
-
-
-}
-
-/* ---------- MENU ---------- */
-
-.menu {
-width: 100% !important;
-max-width: 100% !important;
-min-width: 0 !important;
-
-
-height: auto !important;
-min-height: auto !important;
-
-margin: 0 !important;
-
-padding: 15px !important;
-
-flex: none !important;
-
-
-}
-
-.menuTitle {
-width: 100% !important;
-max-width: 100% !important;
-
-
-margin-top: 0 !important;
-
-height: 45px !important;
-
-
-}
-
-.Menus {
-width: 100% !important;
-max-width: 220px !important;
-
-height: 45px !important;
-
-margin: 8px auto !important;
-
-display: block;
-
-
-}
-
-/* =======================================================
-TABLE / FOOD AREA
-
-```
- THIS IS THE IMPORTANT PART FOR YOUR CURRENT PROBLEM
- ======================================================= */
-
-
-.table {
-display: flex !important;
-flex-direction: column !important;
-
-
-width: 100% !important;
-max-width: 100% !important;
-
-min-width: 0 !important;
-
-min-height: auto !important;
-max-height: none !important;
-
-flex: none !important;
-
-overflow: visible !important;
-
-margin: 0 !important;
-
-
-}
-
-/* ---------- FOOD GRID ---------- */
-
-.menuList {
-width: 100% !important;
-max-width: 100% !important;
-
-
-margin: 10px 0 !important;
-
-padding: 10px !important;
-
-display: grid !important;
-
-grid-template-columns: 1fr !important;
-
-gap: 15px !important;
-
-box-sizing: border-box;
-
-
-}
-
-/* ---------- FOOD CARD ---------- */
-
-.menuList > div {
-width: 100% !important;
-max-width: 100% !important;
-
-
-min-width: 0 !important;
-
-padding: 10px;
-
-text-align: center;
-
-overflow: hidden;
-
-
-}
-
-.menuList h3 {
-font-size: 18px;
-word-break: break-word;
-}
-
-.menuList p {
-word-break: break-word;
-}
-
-/* ---------- FOOD IMAGE ---------- */
-
-.menuList img {
-width: 150px !important;
-height: 150px !important;
-
-
-max-width: 80% !important;
-
-object-fit: cover;
-
-
-}
-
-/* ---------- ORDER BUTTON ---------- */
-
-.menuList button {
-width: 120px;
-max-width: 90%;
-
-
-padding: 10px;
-
-cursor: pointer;
-
-
-}
-
-/* =======================================================
-CART POPUP
-======================================================= */
-
-.cartDiv {
-position: fixed !important;
-
-
-top: 80px !important;
-left: 15px !important;
-right: 15px !important;
-
-width: auto !important;
-max-width: none !important;
-
-min-height: auto !important;
-max-height: 80vh !important;
-
-overflow-y: auto !important;
-
-z-index: 9999;
-
-padding: 15px !important;
-
-
-}
-
-/* =======================================================
-LOGIN MODAL
-======================================================= */
-
-.overlayStyle {
-padding: 15px !important;
-}
-
-.modalStyle {
-width: 100% !important;
-max-width: 350px !important;
-
-padding: 20px !important;
-
-
-}
-
-.modalStyle input {
-width: 100%;
-max-width: 100%;
-height: 40px;
-box-sizing: border-box;
-}
-
-.modalStyle button {
-padding: 10px 15px;
-}
-
-/* =======================================================
-SOCIAL ICONS
-======================================================= */
-
-.socialIcons {
-display: flex !important;
-
-
-flex-wrap: wrap;
-
-gap: 15px !important;
-
-justify-content: center !important;
-
-margin-top: 15px !important;
-
-
-}
-
-/* =======================================================
-FOOTER
-======================================================= */
-
-.footer {
-width: 100% !important;
-
-padding: 20px 10px !important;
-
-text-align: center;
-
-word-break: break-word;
-
-
-}
-
-}
 
 /* =========================================================
-VERY SMALL PHONES
-400px AND BELOW
+   VERY SMALL PHONES
+   400px AND BELOW
 ========================================================= */
 
 @media (max-width: 400px) {
 
-.logos {
-padding: 5px !important;
-}
+  .logos {
+    padding: 5px !important;
+  }
 
-.meba {
-width: 140px !important;
-}
+  .meba {
+    width: 140px !important;
+  }
 
-.profile {
-flex-direction: column !important;
-padding: 10px !important;
-}
 
-.avatar {
-width: 65px !important;
-height: 65px !important;
-}
+  /* Keep profile compact */
+  .profile {
+    flex-direction: row !important;
 
-.options {
-width: 100% !important;
-max-width: 100% !important;
-}
+    padding: 8px !important;
+  }
 
-.menu {
-padding: 10px !important;
-}
+  .avatar {
+    width: 60px !important;
 
-.menuList {
-padding: 5px !important;
-}
+    height: 60px !important;
+  }
 
-.menuList img {
-width: 130px !important;
-height: 130px !important;
-}
+  .options {
+    width: 100% !important;
 
-.cartDiv {
-left: 10px !important;
-right: 10px !important;
-}
+    max-width: 180px !important;
+  }
 
+
+  /* Keep menu narrow */
+  .menu {
+    flex: 0 0 78px !important;
+
+    width: 78px !important;
+
+    min-width: 78px !important;
+
+    max-width: 78px !important;
+
+    padding: 5px !important;
+  }
+
+  .menuTitle {
+    width: 66px !important;
+
+    max-width: 66px !important;
+
+    font-size: 11px !important;
+  }
+
+  .Menus {
+    width: 66px !important;
+
+    max-width: 66px !important;
+
+    height: 38px !important;
+
+    font-size: 10px !important;
+
+    margin: 8px auto !important;
+  }
+
+
+  /* Give table the remaining width */
+  .table {
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+  }
+
+
+  .menuList {
+    padding: 4px !important;
+
+    gap: 5px !important;
+  }
+
+  .menuList > div {
+    padding: 4px !important;
+  }
+
+  .menuList img {
+    width: 80px !important;
+
+    height: 80px !important;
+  }
+
+  .menuList h3 {
+    font-size: 11px !important;
+  }
+
+  .menuList p {
+    font-size: 10px !important;
+  }
+
+  .menuList button {
+    width: 70px !important;
+
+    padding: 6px !important;
+
+    font-size: 10px !important;
+  }
+
+
+  /* ---------- CART ---------- */
+
+  .cartDiv {
+    left: 10px !important;
+
+    right: 10px !important;
+  }
 }
