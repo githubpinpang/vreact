@@ -631,6 +631,15 @@ useEffect(() => {
      {/* <span>Cart</span> */}
      {showCart && (
   <div className="cartDiv" style={styles.cartDiv}>
+
+
+    <button
+      className="cartClose"
+      onClick={() => setShowCart(false)}
+      aria-label="Close cart"
+    >
+      ✕
+    </button>
     <h2>Shopping Cart</h2>
    {cartItems.length === 0 ? (
   <p>Your cart is empty.</p>
