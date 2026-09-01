@@ -166,7 +166,7 @@ const styles = {
 
     profile : {
     
-    width: '500px',
+    width: '300px',
     height:"200px",
     backgroundColor: "yellow",
      borderRadius: '20px',
