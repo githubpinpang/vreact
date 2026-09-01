@@ -19,6 +19,8 @@ import mebaBurger from './assets/meba.png';
 import avatarImg from './assets/avatar.png';
 import { use } from "react";
 
+import "./responsive.css";
+
   // Socials Import
   import {
   FaFacebook,
