@@ -131,8 +131,9 @@ const Cards = ({ foods, setFoods, fetchFoods }) =>{
 function Hello(){
 
 const navigate = useNavigate();
+const styles = {
 
-  const first = {
+   first : {
     //New line
     width: "100%",
     display: 'flex',
@@ -143,11 +144,12 @@ const navigate = useNavigate();
     alignItems: "center",
     flexWrap: "wrap",
     gap: "15px",
-    padding: "10px"
+    padding: "10px",
+      boxSizing: "border-box",
    
 
-  };
-   const logos = {
+  },
+    logos : {
     margin: '10px',
     width: '300px',
     height:"200px",
@@ -156,10 +158,11 @@ const navigate = useNavigate();
     textAlign: 'center',
     border: "none",
     //new
-    maxWidth: "100%"
-   };
+    maxWidth: "100%",
+      boxSizing: "border-box",
+   },
 
-   const profile = {
+    profile : {
     
     width: '500px',
     height:"200px",
@@ -169,48 +172,60 @@ const navigate = useNavigate();
      display: 'flex',
      border: "none",
      //new
-      maxWidth: "100%"
-   };
+      maxWidth: "100%",
+       boxSizing: "border-box",
+     minWidth: "0",
+   },
 
-   const meba = {
+    meba : {
    //borderRadius: '50%'
    width: '200px',
    height: '150px',
-   padding: "20px"
-   };
+  // padding: "20px",
+   //new
+    maxWidth: "80%",
+    objectFit: "contain",
+  padding: "10px",
+  boxSizing: "border-box",
+   },
 
-   const rightSide ={
+    rightSide :{
     display: 'flex',
     gap:'5px',
     // Newly added
     alignItems: "center",
     flexWrap: "wrap",
-    maxWidth: "100%"
-   }
+    maxWidth: "100%",
+    //new
+    justifyContent: "flex-end",
+    flex: "1",
+    minWidth: "0",
+    maxWidth: "100%",
+   },
 
-   const avatar = {
+    avatar : {
     borderRadius: '50%',
     height:'100px',
     width:'100px',
     padding: '30px'
-   };
+   },
 
-   const options ={
+    options :{
     height: '50px',
     width: '250px',
    marginTop: '50px',
    marginRight:'5px',
    borderRadius: '10px'
-   };
+   },
 
-   const cart = {
+    cart : {
     marginTop: '50px',
     height: '200px',
     width: '250px',
     // onClick: ''
-   }
+   },
                     // menu styles
-   const second ={
+    second :{
 
     display: 'flex',
     marginTop: '20px',
@@ -218,10 +233,11 @@ const navigate = useNavigate();
     padding: "30px",
     //new
     width: "100%",
-     alignItems: "flex-start"
-   };
+     alignItems: "flex-start",
+       boxSizing: "border-box",
+   },
    
-   const menu ={
+    menu :{
     width: '350px',
    
     height: '1000px',
@@ -232,11 +248,16 @@ const navigate = useNavigate();
     border: 'none',
     textAlign: "center",
     //new
-     minWidth: "320px",
+     maxWidth: "100%",
+  minWidth: "0",
+  minHeight: "600px",
+  height: "auto",
+  flexShrink: 0,
+    boxSizing: "border-box",
    
-   };
+   },
 
-   const Menus ={
+    Menus :{
     backgroundColor: 'pink',
     height: '50px',
     width: "100%",
@@ -249,10 +270,11 @@ const navigate = useNavigate();
    // borderBottom: "3px solid black",
     boxShadow: '5px 5px 5px red',
     fontWeight: 'bold',
-    //"boxSizing": "border-box"
-   }
+    //new
+    boxSizing: "border-box",
+   },
 
-   const menuTitle = {
+    menuTitle : {
     width: '100%',
     height: '50px',
     border: 'none',
@@ -260,29 +282,34 @@ const navigate = useNavigate();
     borderRadius: '15px',
     fontWeight: 'bold',
     borderBottom: "5px solid black",
-   }
+   },
 
-    const table ={
+     table :{
   // width: '1500px',
-    // minHeight: '1000px',
+     minHeight: '1000px',
     maxHeight: "1000px",
     borderRadius: '20px',
    // backgroundColor: 'grey',
     backgroundColor: "#F28C00",
     display: 'flex',
     flexDirection: 'column', 
-    alignItems: 'center',
+   // alignItems: 'center',
     overflowY: "auto",
 
     //new
-   width: "auto",
+   width: "100%",
     flex: "1",
   minWidth: "0",
-  maxWidth: "100%"
+  maxWidth: "100%",
+  alignItems: "stretch",
+ overflowX: "hidden",
+ boxSizing: "border-box",
+  flex: "1 1 0",
+  minWidth: "0",
 
-   };
+   },
 
-  const menuList ={
+   menuList :{
    alignSelf: 'stretch',
    flex: 1,
  //  backgroundColor: 'red',
@@ -298,11 +325,15 @@ const navigate = useNavigate();
    padding: "15px",
   //  overflowY: "auto"
   //new
-  width: "100%",
-  gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
-  };
+ // width: "100%",
+ // gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+ width: "auto",
+   gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+    boxSizing: "border-box",
 
-  const cartDiv ={
+  },
+
+   cartDiv :{
     minHeight: '800px',
     maxHeight: '100vh',
     overflowY: 'auto',
@@ -317,20 +348,20 @@ const navigate = useNavigate();
     borderTop: '5px solid grey',
     textAlign: 'center'
   }
-
-  const socialIcons ={
+,
+   socialIcons :{
     display: 'flex',
     gap: '20px',
     justifyContent: 'center',
     marginTop: '15px'
-  }
+  },
 
 
-  const signUp = {
+   signUp : {
     padding: '60px'
-  }
+  },
 
-  const overlayStyle = {
+   overlayStyle : {
     position: "fixed",
     top: 0,
     left: 0,
@@ -341,21 +372,27 @@ const navigate = useNavigate();
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1000
-}
+},
 
-const modalStyle = {
+ modalStyle : {
     width: "350px",
     background: "white",
     padding: "25px",
     borderRadius: "10px",
     textAlign: "center"
-}
+},
 
-  const [hover, setHover] = useState(false);
+ 
 
-   const footer ={
+    footer :{
     textAlign: 'center',
-   };
+   },
+
+
+   //end of styles
+  }
+
+  const  [hover, setHover] = useState(false);
 
    const [foods, setFoods] = useState([]);
 
@@ -456,13 +493,13 @@ useEffect(() => {
 
     return (  
       <>
-  <div className="first" style={first}>
+  <div className="first" style={styles.first}>
 
-    <div className="logos" style={logos}>
+    <div className="logos" style={styles.logos}>
 
-    <img src={mebaBurger} className="meba" style={meba}
+    <img src={mebaBurger} className="meba" 
     style={{
-    ...meba,
+    ...styles.meba,
     transition: "transform 0.3s ease"
   }}
   onMouseEnter={(e) => {
@@ -477,11 +514,11 @@ useEffect(() => {
 
     </div>
 
-<div className="rightSide" style={rightSide}>
-    <div className="profile" style={profile}>
-      <img src={avatarImg} className="avatar" style={avatar}/>
+<div className="rightSide" style={styles.rightSide}>
+    <div className="profile" style={styles.profile}>
+      <img src={avatarImg} className="avatar" style={styles.avatar}/>
 
-       <select className="options" style={options}>
+       <select className="options" style={styles.options}>
         
         <option value="">Choose an Action</option>
         <option value="apple">Profile</option>
@@ -490,7 +527,7 @@ useEffect(() => {
       </select>
     </div> 
 
-    <div className="cart" style={cart}>
+    <div className="cart" style={styles.cart}>
        <nav>
       <FaShoppingCart 
       onClick={() => setShowCart(!showCart)}
@@ -506,56 +543,56 @@ useEffect(() => {
     </nav>
    
     </div>
-    <div style={signUp}>
+    <div style={styles.signUp}>
       <button onClick={() => setSignIn(true)} > SignUp/LogIn</button>
     </div>
 </div>
   </div>  
                    {/* Menu Divs */}
-  <div className="second" style={second}>
+  <div className="second" style={styles.second}>
 
-    <div className="menu" style={menu}>
+    <div className="menu" style={styles.menu}>
        <button style={{
-        ...menuTitle, color: hover ? "red" : "black",transition: "0.3s",
+        ...styles.menuTitle, color: hover ? "red" : "black",transition: "0.3s",
         }}
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
         >Menu</button>
 
       <button style={{
-        ...Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("")} 
+        ...styles.Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("")} 
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
         >All</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={{...Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("Burger")} 
+      <button style={{...styles.Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("Burger")} 
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
         >Burger</button> <br /><br /> <br /><br /> <br /><br />
 
-      <button style={{...Menus, color:hover ? 'red' : 'black' }}  onClick={() => filterMenu("Pizza")} 
+      <button style={{...styles.Menus, color:hover ? 'red' : 'black' }}  onClick={() => filterMenu("Pizza")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Pizza</button> <br /><br /> <br /><br /> <br /><br />
 
-      <button style={{...Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
+      <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Juice</button> <br /><br /> <br /><br /> <br /><br />
 
-      <button style={{...Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Sweets")} 
+      <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Sweets")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Sweets</button> <br /><br /> <br /><br /> <br /><br />
-      <button style={{Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br />
+      {/* <button style={{styles.Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br /> */}
     </div>
 
     
-  <div className="table" style={table}>
+  <div className="table" style={styles.table}>
 
 
             <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} /> 
 
-     <div className="menuList" style={menuList}>
+     <div className="menuList" style={styles.menuList}>
         {filteredFoods.map((food) => (
     <div key={food._id}>
        <h3>{food.Name}</h3>
@@ -591,7 +628,7 @@ useEffect(() => {
   {/* <div className="cartDiv" style={cartDiv}> */}
      {/* <span>Cart</span> */}
      {showCart && (
-  <div className="cartDiv" style={cartDiv}>
+  <div className="cartDiv" style={styles.cartDiv}>
     <h2>Shopping Cart</h2>
    {cartItems.length === 0 ? (
   <p>Your cart is empty.</p>
@@ -620,8 +657,8 @@ useEffect(() => {
   </div>
 
   {signIn && (
-    <div style={overlayStyle}>
-        <div style={modalStyle}>
+    <div style={styles.overlayStyle}>
+        <div style={styles.modalStyle}>
 
             <h2>Login</h2>
 
@@ -664,9 +701,9 @@ useEffect(() => {
 
                   {/* Footer Section */}
   <div>
-    <footer className="footer" style={footer}>
+    <footer className="footer" style={styles.footer}>
       
-       <div style={socialIcons}>
+       <div style={styles.socialIcons}>
     <a href="https://facebook.com" target="_blank" rel="noreferrer">
       <FaFacebook size={30} />
     </a>
