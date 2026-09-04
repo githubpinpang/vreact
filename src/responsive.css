@@ -1,1587 +1,766 @@
 /* =========================================================
-   GLOBAL
-   ========================================================= */
+GLOBAL / DESKTOP BASE
+========================================================= */
 
 * {
   box-sizing: border-box;
-}
+  }
 
 html,
 body,
 #root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
-html {
-  overflow-x: auto;
+margin: 0;
+padding: 0;
+width: 100%;
+min-height: 100%;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #1d2935;
-  color: #111;
-  overflow-x: auto;
+overflow-x: hidden;
+font-family: Arial, sans-serif;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+max-width: 100%;
 }
-
 
 /* =========================================================
-   HEADER
-   Logo + Profile + Cart + Login
-   ========================================================= */
+HEADER
+========================================================= */
 
 .first {
-  width: 100%;
-  min-height: 150px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 15px;
-  padding: 15px;
-
-  border-bottom: 3px solid #000;
-
-  background: #1d2935;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 15px;
 }
-
-
-/* -------------------------
-   LOGO
-   ------------------------- */
 
 .logos {
-  width: 300px;
-  min-width: 180px;
-
-  margin: 0;
-
-  padding: 10px;
-
-  background: pink;
-
-  border-radius: 20px;
-
-  text-align: center;
-
-  flex-shrink: 1;
+max-width: 100%;
+flex-shrink: 1;
 }
-
-.meba {
-  width: 200px;
-  height: 150px;
-
-  max-width: 100%;
-
-  object-fit: contain;
-
-  padding: 10px;
-
-  transition: transform 0.3s ease;
-}
-
-
-/* -------------------------
-   RIGHT SIDE
-   ------------------------- */
 
 .rightSide {
-  flex: 1 1 auto;
-
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  gap: 10px;
-
-  flex-wrap: wrap;
+flex: 1 1 auto;
+min-width: 0;
+max-width: 100%;
 }
 
-
-/* -------------------------
-   PROFILE
-   ------------------------- */
-
 .profile {
-  width: 400px;
-  min-width: 250px;
-
-  min-height: 140px;
-
-  padding: 10px;
-
-  background: yellow;
-
-  border-radius: 20px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 15px;
-
-  flex-shrink: 1;
+max-width: 100%;
+min-width: 0;
 }
 
 .avatar {
-  width: 90px;
-  height: 90px;
-
-  padding: 5px;
-
-  border-radius: 50%;
-
-  object-fit: contain;
-
-  flex-shrink: 0;
+max-width: 100%;
+object-fit: contain;
 }
 
 .options {
-  width: 220px;
-  max-width: 100%;
-
-  height: 45px;
-
-  margin: 0;
-
-  border-radius: 10px;
-
-  padding: 5px;
-
-  flex: 1 1 auto;
+max-width: 100%;
 }
-
-
-/* -------------------------
-   CART ICON
-   ------------------------- */
 
 .cart {
-  width: 100px;
-  min-width: 70px;
-
-  height: auto;
-
-  margin: 0;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  flex-shrink: 0;
+flex-shrink: 1;
+max-width: 100%;
 }
-
-.cart nav {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 3px;
-}
-
-.cart svg {
-  color: green;
-
-  font-size: 35px;
-
-  width: 50px;
-  height: 50px;
-
-  cursor: pointer;
-}
-
-
-/* -------------------------
-   SIGN UP / LOGIN
-   ------------------------- */
-
-.signUp {
-  padding: 20px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 1;
-}
-
-.signUp button {
-  padding: 10px 15px;
-
-  border: none;
-
-  border-radius: 8px;
-
-  cursor: pointer;
-
-  white-space: nowrap;
-}
-
 
 /* =========================================================
-   MAIN CONTENT
-   MENU + FOOD TABLE
-   ========================================================= */
+MAIN CONTENT
+========================================================= */
 
 .second {
-  width: 100%;
-
-  display: flex;
-
-  align-items: stretch;
-
-  gap: 20px;
-
-  padding: 20px;
-
-  margin-top: 10px;
-
-  /*
-     IMPORTANT:
-     Allow horizontal scrolling when the device
-     is too narrow to display everything.
-  */
-  overflow-x: auto;
-  overflow-y: visible;
+width: 100%;
+max-width: 100%;
+display: flex;
+align-items: flex-start;
+gap: 20px;
+overflow: hidden;
 }
-
-
-/* =========================================================
-   LEFT MENU
-   ========================================================= */
 
 .menu {
-  width: 280px;
-
-  min-width: 280px;
-
-  min-height: 700px;
-
-  height: auto;
-
-  padding: 15px;
-
-  background: silver;
-
-  border-radius: 20px;
-
-  text-align: center;
-
-  flex-shrink: 0;
+flex: 0 1 350px;
+width: 350px;
+max-width: 100%;
+min-width: 0;
 }
-
-
-/* -------------------------
-   MENU TITLE
-   ------------------------- */
-
-.menuTitle {
-  width: 100%;
-
-  height: 55px;
-
-  margin: 0 0 20px 0;
-
-  padding: 10px;
-
-  border: none;
-
-  border-bottom: 5px solid black;
-
-  border-radius: 15px;
-
-  font-size: 20px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  background: white;
-}
-
-
-/* -------------------------
-   MENU BUTTONS
-   ------------------------- */
-
-.Menus {
-  display: block;
-
-  width: 160px;
-
-  height: 55px;
-
-  margin: 20px auto;
-
-  padding: 10px;
-
-  background: pink;
-
-  border: none;
-
-  border-radius: 15px;
-
-  box-shadow: 5px 5px 5px red;
-
-  font-size: 17px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.Menus:hover {
-  background-color: #ff9db0;
-
-  color: red;
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   FOOD TABLE
-   ========================================================= */
 
 .table {
-  /*
-     This is the important part.
-
-     The table takes all remaining available space.
-  */
-
-  flex: 1 1 0;
-
-  min-width: 0;
-
-  width: auto;
-
-  min-height: 700px;
-
-  padding: 10px;
-
-  background: #f28c00;
-
-  border-radius: 20px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: stretch;
-
-  overflow: hidden;
+flex: 1 1 0;
+width: 0;
+min-width: 0;
+max-width: 100%;
+overflow-x: hidden;
+overflow-y: auto;
 }
-
-
-/* =========================================================
-   FOOD GRID
-   ========================================================= */
 
 .menuList {
-  width: 100%;
-
-  flex: 1 1 auto;
-
-  min-width: 0;
-
-  margin: 0;
-
-  padding: 15px;
-
-  background: #6b3e1e;
-
-  border-radius: 15px;
-
-  display: grid;
-
-  /*
-     Automatically use the available width.
-  */
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(170px, 1fr));
-
-  gap: 20px;
-
-  align-items: start;
-
-  justify-items: stretch;
-
-  overflow-y: auto;
+width: 100%;
+max-width: 100%;
+display: grid;
+grid-template-columns: repeat(
+auto-fit,
+minmax(180px, 1fr)
+);
+gap: 20px;
 }
 
-
 /* =========================================================
-   INDIVIDUAL FOOD CARD
-   ========================================================= */
+FOOD CARDS
+========================================================= */
 
 .menuList > div {
-  width: 100%;
-
-  min-width: 0;
-
-  max-width: 100%;
-
-  padding: 10px;
-
-  text-align: center;
-
-  overflow: hidden;
-
-  background: transparent;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: flex-start;
+min-width: 0;
+max-width: 100%;
+overflow: hidden;
+text-align: center;
 }
-
-
-/* Food title */
-
-.menuList h3 {
-  width: 100%;
-
-  margin: 5px 0 10px;
-
-  font-size: 18px;
-
-  word-break: break-word;
-
-  overflow-wrap: anywhere;
-}
-
-
-/* Food text */
-
-.menuList p {
-  margin: 5px 0;
-
-  word-break: break-word;
-
-  overflow-wrap: anywhere;
-}
-
-
-/* Food images */
 
 .menuList img {
-  display: block;
-
-  width: 150px;
-
-  height: 150px;
-
-  max-width: 100%;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-  margin: 5px auto;
+max-width: 100%;
+height: auto;
+object-fit: cover;
 }
-
-
-/* Order button */
-
-.menuList button {
-  width: 120px;
-
-  max-width: 100%;
-
-  padding: 10px;
-
-  margin-top: 5px;
-
-  border-radius: 5px;
-
-  border: 1px solid #aaa;
-
-  cursor: pointer;
-}
-
 
 /* =========================================================
-   CART POPUP
-   ========================================================= */
+CART
+========================================================= */
 
 .cartDiv {
-  position: fixed;
-
-  top: 100px;
-
-  right: 20px;
-
-  width: 320px;
-
-  max-width: calc(100vw - 30px);
-
-  max-height: 80vh;
-
-  min-height: auto;
-
-  padding: 20px;
-
-  overflow-y: auto;
-
-  background: pink;
-
-  border-radius: 10px;
-
-  box-shadow:
-    5px 5px 15px rgba(0, 0, 0, 0.4);
-
-  border-top: 5px solid grey;
-
-  text-align: center;
-
-  z-index: 9999;
+max-width: calc(100vw - 30px);
 }
-
 
 .cartDiv img {
-  width: 70px;
-
-  height: 70px;
-
-  max-width: 100%;
-
-  object-fit: contain;
-
-  border-radius: 8px;
+max-width: 100%;
+object-fit: contain;
 }
 
+/* =========================================================
+LOGIN MODAL
+========================================================= */
+
+.overlayStyle {
+padding: 15px;
+}
+
+.modalStyle {
+max-width: calc(100vw - 30px);
+width: 350px;
+}
 
 /* =========================================================
-   CART CLOSE X BUTTON
-   ========================================================= */
+TABLET
+601px - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+/* ---------- HEADER ---------- */
+
+.first {
+padding: 15px !important;
+}
+
+.logos {
+width: 250px !important;
+height: auto !important;
+}
+
+.meba {
+width: 180px !important;
+height: auto !important;
+}
+
+.rightSide {
+gap: 10px !important;
+}
+
+.profile {
+width: 350px !important;
+height: auto !important;
+min-height: 150px;
+margin-right: 0 !important;
+}
+
+.avatar {
+width: 80px !important;
+height: 80px !important;
+padding: 15px !important;
+}
+
+.options {
+width: 200px !important;
+margin-top: 10px !important;
+}
+
+.cart {
+width: 100px !important;
+height: auto !important;
+margin-top: 10px !important;
+}
+
+.signUp {
+padding: 20px !important;
+}
+
+/* ---------- MAIN ---------- */
+
+.second {
+padding: 15px !important;
+gap: 15px !important;
+}
+
+.menu {
+flex: 0 0 220px;
+width: 220px !important;
+min-height: auto !important;
+height: auto !important;
+margin-left: 0 !important;
+}
+
+.Menus {
+width: 140px !important;
+}
+
+.table {
+flex: 1 1 0;
+width: 0 !important;
+min-width: 0 !important;
+max-width: 100% !important;
+min-height: 600px !important;
+}
+
+.menuList {
+grid-template-columns:
+repeat(auto-fit, minmax(150px, 1fr)) !important;
+
+gap: 15px !important;
+margin: 10px !important;
+width: auto !important;
+padding: 10px !important;
+
+
+}
+
+.menuList > div {
+font-size: 14px;
+}
+
+.menuList img {
+width: 130px;
+height: 130px;
+}
+
+/* ---------- CART ---------- */
+
+.cartDiv {
+position: fixed !important;
+top: 100px !important;
+right: 15px !important;
+width: 300px !important;
+max-width: calc(100vw - 30px) !important;
+max-height: 75vh !important;
+min-height: auto !important;
+z-index: 2000;
+}
+}
+
+/* =========================================================
+PHONE
+600px AND BELOW
+========================================================= */
+
+@media (max-width: 600px) {
+
+/* ---------- PAGE ---------- */
+
+body {
+overflow-x: hidden;
+}
+
+/* =======================================================
+HEADER
+======================================================= */
+
+.first {
+width: 100% !important;
+padding: 10px !important;
+
+
+display: flex !important;
+flex-direction: column !important;
+
+align-items: stretch !important;
+justify-content: center !important;
+
+gap: 10px !important;
+
+
+}
+
+/* ---------- LOGO ---------- */
+
+.logos {
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+
+margin: 0 !important;
+padding: 10px !important;
+
+text-align: center;
+
+
+}
+
+.meba {
+width: 160px !important;
+max-width: 80% !important;
+height: auto !important;
+}
+
+/* ---------- RIGHT SIDE ---------- */
+
+.rightSide {
+width: 100% !important;
+max-width: 100% !important;
+
+
+display: flex !important;
+flex-direction: column !important;
+
+align-items: stretch !important;
+justify-content: center !important;
+
+gap: 10px !important;
+
+
+}
+
+/* ---------- PROFILE ---------- */
+
+.profile {
+width: 100% !important;
+max-width: 100% !important;
+
+
+height: auto !important;
+min-height: 100px !important;
+
+margin: 0 !important;
+padding: 10px !important;
+
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+
+gap: 10px;
+
+
+}
+
+.avatar {
+width: 70px !important;
+height: 70px !important;
+
+
+padding: 5px !important;
+
+flex-shrink: 0;
+
+
+}
+
+.options {
+width: 100% !important;
+max-width: 220px !important;
+
+height: 45px !important;
+
+margin: 0 !important;
+
+
+}
+
+/* ---------- CART ---------- */
+
+.cart {
+width: 100% !important;
+height: auto !important;
+
+
+margin: 0 !important;
+
+text-align: center;
+
+
+}
 
 .cartClose {
-  position: absolute;
-
+   position: absolute;
   top: 8px;
   right: 8px;
 
   width: 38px;
   height: 38px;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
   background: #ff0000;
-
-  color: white;
+  color: #ffffff;
 
   border: 3px solid #8b0000;
-
   border-radius: 4px;
 
   font-size: 24px;
-
   font-weight: bold;
-
   line-height: 1;
 
   cursor: pointer;
 
-  box-shadow:
-    2px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cartClose:hover {
-  background: darkred;
-
+  background-color: darkred;
   border-color: black;
 }
 
+/* ---------- SIGN UP ---------- */
 
-/* =========================================================
-   LOGIN OVERLAY
-   ========================================================= */
+.signUp {
+width: 100% !important;
+padding: 10px !important;
 
-.overlayStyle {
-  position: fixed;
 
-  inset: 0;
+text-align: center;
 
-  width: 100%;
-  height: 100%;
 
-  padding: 15px;
-
-  background: rgba(0, 0, 0, 0.5);
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  z-index: 10000;
 }
 
+.signUp button {
+width: 90%;
+max-width: 250px;
+padding: 10px;
+}
 
-/* =========================================================
-   LOGIN MODAL
-   ========================================================= */
+/* =======================================================
+MENU + FOOD TABLE
+======================================================= */
+
+.second {
+width: 100% !important;
+
+
+display: flex !important;
+flex-direction: column !important;
+
+align-items: stretch !important;
+
+gap: 15px !important;
+
+padding: 10px !important;
+margin-top: 10px !important;
+
+overflow: visible !important;
+
+
+}
+
+/* ---------- MENU ---------- */
+
+.menu {
+width: 100% !important;
+max-width: 100% !important;
+min-width: 0 !important;
+
+
+height: auto !important;
+min-height: auto !important;
+
+margin: 0 !important;
+
+padding: 15px !important;
+
+flex: none !important;
+
+
+}
+
+.menuTitle {
+width: 100% !important;
+max-width: 100% !important;
+
+
+margin-top: 0 !important;
+
+height: 45px !important;
+
+
+}
+
+.Menus {
+width: 100% !important;
+max-width: 220px !important;
+
+height: 45px !important;
+
+margin: 8px auto !important;
+
+display: block;
+
+
+}
+
+/* =======================================================
+TABLE / FOOD AREA
+
+```
+ THIS IS THE IMPORTANT PART FOR YOUR CURRENT PROBLEM
+ ======================================================= */
+
+
+.table {
+display: flex !important;
+flex-direction: column !important;
+
+
+width: 100% !important;
+max-width: 100% !important;
+
+min-width: 0 !important;
+
+min-height: auto !important;
+max-height: none !important;
+
+flex: none !important;
+
+overflow: visible !important;
+
+margin: 0 !important;
+
+
+}
+
+/* ---------- FOOD GRID ---------- */
+
+.menuList {
+width: 100% !important;
+max-width: 100% !important;
+
+
+margin: 10px 0 !important;
+
+padding: 10px !important;
+
+display: grid !important;
+
+grid-template-columns: 1fr !important;
+
+gap: 15px !important;
+
+box-sizing: border-box;
+
+
+}
+
+/* ---------- FOOD CARD ---------- */
+
+.menuList > div {
+width: 100% !important;
+max-width: 100% !important;
+
+
+min-width: 0 !important;
+
+padding: 10px;
+
+text-align: center;
+
+overflow: hidden;
+
+
+}
+
+.menuList h3 {
+font-size: 18px;
+word-break: break-word;
+}
+
+.menuList p {
+word-break: break-word;
+}
+
+/* ---------- FOOD IMAGE ---------- */
+
+.menuList img {
+width: 150px !important;
+height: 150px !important;
+
+
+max-width: 80% !important;
+
+object-fit: cover;
+
+
+}
+
+/* ---------- ORDER BUTTON ---------- */
+
+.menuList button {
+width: 120px;
+max-width: 90%;
+
+
+padding: 10px;
+
+cursor: pointer;
+
+
+}
+
+/* =======================================================
+CART POPUP
+======================================================= */
+
+.cartDiv {
+position: fixed !important;
+
+
+top: 80px !important;
+left: 15px !important;
+right: 15px !important;
+
+width: auto !important;
+max-width: none !important;
+
+min-height: auto !important;
+max-height: 80vh !important;
+
+overflow-y: auto !important;
+
+z-index: 9999;
+
+padding: 15px !important;
+
+
+}
+
+/* =======================================================
+LOGIN MODAL
+======================================================= */
+
+.overlayStyle {
+padding: 15px !important;
+}
 
 .modalStyle {
-  width: 350px;
+width: 100% !important;
+max-width: 350px !important;
 
-  max-width: calc(100vw - 30px);
+padding: 20px !important;
 
-  padding: 25px;
 
-  background: white;
-
-  border-radius: 10px;
-
-  text-align: center;
 }
 
 .modalStyle input {
-  width: 100%;
-
-  height: 40px;
-
-  padding: 8px;
-
-  box-sizing: border-box;
+width: 100%;
+max-width: 100%;
+height: 40px;
+box-sizing: border-box;
 }
 
 .modalStyle button {
-  padding: 10px 15px;
-
-  cursor: pointer;
+padding: 10px 15px;
 }
 
-
-/* =========================================================
-   SOCIAL ICONS
-   ========================================================= */
+/* =======================================================
+SOCIAL ICONS
+======================================================= */
 
 .socialIcons {
-  display: flex;
+display: flex !important;
 
-  flex-wrap: wrap;
 
-  justify-content: center;
+flex-wrap: wrap;
 
-  align-items: center;
+gap: 15px !important;
 
-  gap: 20px;
+justify-content: center !important;
 
-  margin-top: 15px;
+margin-top: 15px !important;
+
+
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* =======================================================
+FOOTER
+======================================================= */
 
 .footer {
-  width: 100%;
+width: 100% !important;
 
-  padding: 20px 10px;
+padding: 20px 10px !important;
 
-  text-align: center;
+text-align: center;
 
-  word-break: break-word;
+word-break: break-word;
 
-  background: #1d2935;
 
-  color: white;
 }
 
-
-/* =========================================================
-   TABLET
-   601px - 900px
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  /* -------------------------
-     HEADER
-     ------------------------- */
-
-  .first {
-    padding: 12px;
-
-    gap: 10px;
-  }
-
-  .logos {
-    width: 220px;
-
-    min-width: 180px;
-  }
-
-  .meba {
-    width: 160px;
-
-    height: 130px;
-  }
-
-  .rightSide {
-    gap: 8px;
-  }
-
-  .profile {
-    width: 300px;
-
-    min-width: 220px;
-
-    min-height: 110px;
-  }
-
-  .avatar {
-    width: 70px;
-
-    height: 70px;
-  }
-
-  .options {
-    width: 170px;
-
-    height: 42px;
-  }
-
-  .cart {
-    width: 70px;
-  }
-
-  .signUp {
-    padding: 10px;
-  }
-
-
-  /* -------------------------
-     MAIN
-     ------------------------- */
-
-  .second {
-    padding: 15px;
-
-    gap: 15px;
-
-    /*
-       Keep menu and table SIDE BY SIDE.
-    */
-
-    flex-direction: row;
-
-    align-items: stretch;
-
-    overflow-x: auto;
-  }
-
-  .menu {
-    width: 220px;
-
-    min-width: 220px;
-
-    min-height: 650px;
-
-    flex-shrink: 0;
-  }
-
-  .Menus {
-    width: 140px;
-
-    height: 50px;
-  }
-
-  .table {
-    flex: 1 1 500px;
-
-    min-width: 500px;
-
-    min-height: 650px;
-  }
-
-  .menuList {
-    grid-template-columns:
-      repeat(auto-fit, minmax(150px, 1fr));
-
-    gap: 15px;
-
-    padding: 10px;
-  }
-
-  .menuList img {
-    width: 130px;
-
-    height: 130px;
-  }
-
-
-  /* -------------------------
-     CART
-     ------------------------- */
-
-  .cartDiv {
-    top: 80px;
-
-    right: 15px;
-
-    width: 300px;
-
-    max-width: calc(100vw - 30px);
-  }
 }
 
-
 /* =========================================================
-   PHONE
-   600px AND BELOW
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  body {
-    overflow-x: auto;
-  }
-
-
-  /* =======================================================
-     HEADER
-     ======================================================= */
-
-  .first {
-    width: 100%;
-
-    min-width: 0;
-
-    padding: 10px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: stretch;
-
-    gap: 10px;
-  }
-
-
-  /* -------------------------
-     LOGO
-     ------------------------- */
-
-  .logos {
-    width: 100%;
-
-    min-width: 0;
-
-    max-width: 100%;
-
-    height: auto;
-
-    margin: 0;
-
-    padding: 8px;
-
-    text-align: center;
-  }
-
-  .meba {
-    width: 150px;
-
-    max-width: 70%;
-
-    height: auto;
-
-    padding: 5px;
-  }
-
-
-  /* -------------------------
-     RIGHT SIDE
-     ------------------------- */
-
-  .rightSide {
-    width: 100%;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    display: flex;
-
-    flex-direction: row;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-  }
-
-
-  /* -------------------------
-     PROFILE
-     ------------------------- */
-
-  .profile {
-    width: auto;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    min-height: 80px;
-
-    height: auto;
-
-    padding: 8px;
-
-    border-radius: 15px;
-
-    display: flex;
-
-    flex: 1 1 220px;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-  }
-
-  .avatar {
-    width: 60px;
-
-    height: 60px;
-
-    padding: 3px;
-  }
-
-  .options {
-    width: 150px;
-
-    max-width: calc(100% - 70px);
-
-    height: 40px;
-
-    margin: 0;
-  }
-
-
-  /* -------------------------
-     CART
-     ------------------------- */
-
-  .cart {
-    width: 60px;
-
-    min-width: 60px;
-
-    height: auto;
-
-    margin: 0;
-
-    flex-shrink: 0;
-  }
-
-  .cart svg {
-    width: 40px;
-
-    height: 40px;
-
-    font-size: 30px;
-  }
-
-
-  /* -------------------------
-     LOGIN
-     ------------------------- */
-
-  .signUp {
-    width: auto;
-
-    padding: 5px;
-
-    flex: 1 1 150px;
-  }
-
-  .signUp button {
-    width: 100%;
-
-    max-width: 180px;
-
-    padding: 9px 10px;
-  }
-
-
-  /* =======================================================
-     MENU + TABLE
-
-     IMPORTANT:
-     They stay SIDE BY SIDE on phones.
-
-     If the phone is too narrow, the user can
-     scroll horizontally.
-     ======================================================= */
-
-  .second {
-    width: max-content;
-
-    min-width: 100%;
-
-    padding: 10px;
-
-    margin-top: 10px;
-
-    display: flex;
-
-    flex-direction: row;
-
-    align-items: stretch;
-
-    gap: 10px;
-
-    overflow-x: auto;
-
-    overflow-y: visible;
-  }
-
-
-  /* =======================================================
-     MENU ON PHONE
-     ======================================================= */
-
-  .menu {
-    width: 150px;
-
-    min-width: 150px;
-
-    max-width: 150px;
-
-    min-height: 650px;
-
-    height: auto;
-
-    margin: 0;
-
-    padding: 8px;
-
-    border-radius: 15px;
-
-    flex-shrink: 0;
-  }
-
-
-  /* -------------------------
-     MENU TITLE
-     ------------------------- */
-
-  .menuTitle {
-    width: 100%;
-
-    height: 50px;
-
-    margin: 0 0 15px 0;
-
-    font-size: 17px;
-  }
-
-
-  /* -------------------------
-     MENU BUTTONS
-     ------------------------- */
-
-  .Menus {
-    width: 110px;
-
-    max-width: 100%;
-
-    height: 50px;
-
-    margin: 25px auto;
-
-    padding: 8px;
-
-    font-size: 16px;
-
-    border-radius: 14px;
-
-    box-shadow: 4px 4px 5px red;
-  }
-
-
-  /* =======================================================
-     FOOD TABLE ON PHONE
-     ======================================================= */
-
-  .table {
-    /*
-       Give the food area a REAL width.
-
-       This prevents the table from disappearing.
-    */
-
-    width: 500px;
-
-    min-width: 500px;
-
-    max-width: none;
-
-    min-height: 650px;
-
-    height: auto;
-
-    flex: 0 0 500px;
-
-    padding: 8px;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-  }
-
-
-  /* =======================================================
-     FOOD GRID
-
-     Uses the WHOLE table width.
-     ======================================================= */
-
-  .menuList {
-    width: 100%;
-
-    min-width: 0;
-
-    margin: 0;
-
-    padding: 10px;
-
-    display: grid;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 10px;
-
-    align-items: start;
-
-    justify-items: stretch;
-
-    overflow-y: auto;
-  }
-
-
-  /* =======================================================
-     FOOD CARD
-     ======================================================= */
-
-  .menuList > div {
-    width: 100%;
-
-    min-width: 0;
-
-    max-width: 100%;
-
-    padding: 8px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
-
-    overflow: hidden;
-  }
-
-
-  .menuList h3 {
-    width: 100%;
-
-    font-size: 16px;
-
-    margin: 4px 0 8px;
-
-    word-break: break-word;
-  }
-
-  .menuList p {
-    width: 100%;
-
-    margin: 4px 0;
-
-    font-size: 14px;
-
-    word-break: break-word;
-  }
-
-
-  /* -------------------------
-     FOOD IMAGE
-     ------------------------- */
-
-  .menuList img {
-    width: 130px;
-
-    height: 130px;
-
-    max-width: 100%;
-
-    object-fit: cover;
-
-    border-radius: 10px;
-  }
-
-
-  /* -------------------------
-     ORDER BUTTON
-     ------------------------- */
-
-  .menuList button {
-    width: 100px;
-
-    max-width: 100%;
-
-    padding: 9px 5px;
-
-    margin-top: 5px;
-  }
-
-
-  /* =======================================================
-     CART
-     ======================================================= */
-
-  .cartDiv {
-    position: fixed;
-
-    top: 70px;
-
-    left: 10px;
-
-    right: 10px;
-
-    width: auto;
-
-    max-width: none;
-
-    max-height: 80vh;
-
-    min-height: auto;
-
-    padding: 15px;
-
-    overflow-y: auto;
-
-    z-index: 9999;
-  }
-
-
-  /* =======================================================
-     LOGIN
-     ======================================================= */
-
-  .overlayStyle {
-    padding: 10px;
-  }
-
-  .modalStyle {
-    width: 100%;
-
-    max-width: 350px;
-
-    padding: 20px;
-  }
-
-  .modalStyle input {
-    width: 100%;
-
-    height: 40px;
-  }
-
-
-  /* =======================================================
-     SOCIAL ICONS
-     ======================================================= */
-
-  .socialIcons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    margin-top: 15px;
-  }
-
-
-  /* =======================================================
-     FOOTER
-     ======================================================= */
-
-  .footer {
-    width: 100%;
-
-    padding: 20px 10px;
-
-    text-align: center;
-
-    font-size: 14px;
-
-    word-break: break-word;
-  }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-   400px AND BELOW
-   ========================================================= */
+VERY SMALL PHONES
+400px AND BELOW
+========================================================= */
 
 @media (max-width: 400px) {
 
-  /* -------------------------
-     HEADER
-     ------------------------- */
-
-  .logos {
-    padding: 5px;
-  }
-
-  .meba {
-    width: 130px;
-  }
-
-  .rightSide {
-    gap: 5px;
-  }
-
-  .profile {
-    flex: 1 1 190px;
-
-    min-height: 70px;
-
-    padding: 5px;
-  }
-
-  .avatar {
-    width: 50px;
-
-    height: 50px;
-  }
-
-  .options {
-    width: 125px;
-
-    max-width: calc(100% - 55px);
-
-    height: 38px;
-
-    font-size: 13px;
-  }
-
-  .cart {
-    width: 50px;
-
-    min-width: 50px;
-  }
-
-  .cart svg {
-    width: 35px;
-
-    height: 35px;
-  }
-
-  .signUp {
-    flex: 1 1 130px;
-  }
-
-
-  /* -------------------------
-     MENU
-     ------------------------- */
-
-  .menu {
-    width: 135px;
-
-    min-width: 135px;
-
-    max-width: 135px;
-
-    min-height: 600px;
-
-    padding: 6px;
-  }
-
-  .Menus {
-    width: 100px;
-
-    height: 45px;
-
-    font-size: 14px;
-
-    margin: 22px auto;
-  }
-
-  .menuTitle {
-    height: 45px;
-
-    font-size: 15px;
-  }
-
-
-  /* -------------------------
-     FOOD TABLE
-     ------------------------- */
-
-  .table {
-    /*
-       Still wider than the phone.
-
-       User can horizontally scroll to see it.
-    */
-
-    width: 450px;
-
-    min-width: 450px;
-
-    flex-basis: 450px;
-
-    min-height: 600px;
-  }
-
-  .menuList {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 8px;
-
-    padding: 8px;
-  }
-
-  .menuList > div {
-    padding: 5px;
-  }
-
-  .menuList img {
-    width: 110px;
-
-    height: 110px;
-  }
-
-  .menuList h3 {
-    font-size: 14px;
-  }
-
-  .menuList p {
-    font-size: 13px;
-  }
-
-  .menuList button {
-    width: 90px;
-
-    padding: 8px 4px;
-  }
-
-
-  /* -------------------------
-     CART
-     ------------------------- */
-
-  .cartDiv {
-    left: 8px;
-
-    right: 8px;
-
-    top: 65px;
-
-    max-height: 80vh;
-  }
+.logos {
+padding: 5px !important;
 }
 
+.meba {
+width: 140px !important;
+}
 
-/* =========================================================
-   EXTRA SMALL DEVICES
-   350px AND BELOW
-   ========================================================= */
+.profile {
+flex-direction: column !important;
+padding: 10px !important;
+}
 
-@media (max-width: 350px) {
+.avatar {
+width: 65px !important;
+height: 65px !important;
+}
 
-  .profile {
-    flex-basis: 170px;
-  }
+.options {
+width: 100% !important;
+max-width: 100% !important;
+}
 
-  .avatar {
-    width: 45px;
+.menu {
+padding: 10px !important;
+}
 
-    height: 45px;
-  }
+.menuList {
+padding: 5px !important;
+}
 
-  .options {
-    width: 110px;
+.menuList img {
+width: 130px !important;
+height: 130px !important;
+}
 
-    font-size: 12px;
-  }
+.cartDiv {
+left: 10px !important;
+right: 10px !important;
+}
 
-  .menu {
-    width: 125px;
-
-    min-width: 125px;
-
-    max-width: 125px;
-  }
-
-  .Menus {
-    width: 92px;
-
-    font-size: 13px;
-  }
-
-  .table {
-    width: 420px;
-
-    min-width: 420px;
-
-    flex-basis: 420px;
-  }
-
-  .menuList img {
-    width: 100px;
-
-    height: 100px;
-  }
 }

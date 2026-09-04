@@ -166,7 +166,7 @@ const styles = {
 
     profile : {
     
-    width: '500px',
+    width: '300px',
     height:"200px",
     backgroundColor: "yellow",
      borderRadius: '20px',
@@ -495,89 +495,28 @@ useEffect(() => {
 
     return (  
       <>
-  {/* <div className="first" style={styles.first}> */}
-  <div className="
-  w-full
-  flex
-  flex-col
-  gap-3
-  border-b-[3px]
-  border-black
-  p-2
-  box-border
+  <div className="first" style={styles.first}>
 
-  sm:flex-row
-  sm:items-center
-  sm:justify-between
-  sm:gap-2
-">
+    <div className="logos" style={styles.logos}>
 
-    {/* <div className="logos" style={styles.logos}> */}
-    <div className="
-  w-full
-  sm:w-[180px]
-  md:w-[220px]
-  lg:w-[300px]
-
-  h-auto
-  sm:h-[120px]
-  md:h-[150px]
-  lg:h-[180px]
-
-  bg-pink-300
-  rounded-[20px]
-
-  flex
-  flex-col
-  items-center
-  justify-center
-
-  box-border
-">
-
-   <img
-  src={mebaBurger}
-  className="
-    w-[90px]
-    h-[70px]
-
-    sm:w-[110px]
-    sm:h-[80px]
-
-    md:w-[140px]
-    md:h-[100px]
-
-    lg:w-[180px]
-    lg:h-[130px]
-
-    object-contain
-    p-2
-    box-border
-  "
-/>
-     <br />
-   <h4 className="text-sm sm:text-base md:text-lg lg:text-xl">
-  Meba Burger
-</h4>
+    <img src={mebaBurger} className="meba" 
+    style={{
+    ...styles.meba,
+    transition: "transform 0.3s ease"
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = "scale(1.1) rotate(5deg)";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = "scale(1) rotate(0deg)";
+  }}
+    /> <br />
+    <h4>Meba Burger</h4>
 
 
     </div>
 
-<div className="
-  w-full
-  sm:w-auto
-
-  flex
-  items-center
-  justify-center
-  sm:justify-end
-
-  gap-2
-  sm:gap-3
-
-  flex-wrap
-  min-w-0
-">
+<div className="rightSide" style={styles.rightSide}>
     <div className="profile" style={styles.profile}>
       <img src={avatarImg} className="avatar" style={styles.avatar}/>
 
@@ -594,13 +533,7 @@ useEffect(() => {
        <nav>
       <FaShoppingCart 
       onClick={() => setShowCart(!showCart)}
-      style={{
-        color: "green",
-        fontSize: "35px",
-        cursor: "pointer",
-        height:'50px',
-        width: '80px'
-      }}
+       className="cartIcon"
       />
       <span>Cart</span>
     </nav>
@@ -626,26 +559,26 @@ useEffect(() => {
         ...styles.Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("")} 
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
-        >All</button> <br /><br /> <br /><br /> <br /><br />
+        >All</button> 
       <button style={{...styles.Menus, color: hover ? 'red' : 'black', transition:'0.35s'}}  onClick={() => filterMenu("Burger")} 
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
-        >Burger</button> <br /><br /> <br /><br /> <br /><br />
+        >Burger</button> 
 
       <button style={{...styles.Menus, color:hover ? 'red' : 'black' }}  onClick={() => filterMenu("Pizza")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        >Pizza</button> <br /><br /> <br /><br /> <br /><br />
+        >Pizza</button> 
 
       <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        >Juice</button> <br /><br /> <br /><br /> <br /><br />
+        >Juice</button> 
 
       <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Sweets")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        >Sweets</button> <br /><br /> <br /><br /> <br /><br />
+        >Sweets</button> 
       {/* <button style={{styles.Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br /> */}
     </div>
 
@@ -664,8 +597,8 @@ useEffect(() => {
         // src={`http://localhost:5000/uploads/${food.Image}`}
         src={`https://meba-api.onrender.com/uploads/${food.Image}`}
         // https://meba-api.onrender.com/food/API/fooditem
-        width="150"
-        height="150"
+         width="150"
+         height="150"
         style={{borderRadius: "10px"}}
       />
       )}
