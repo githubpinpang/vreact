@@ -19,7 +19,9 @@ import mebaBurger from './assets/meba.png';
 import avatarImg from './assets/avatar.png';
 import { use } from "react";
 
-import "./responsive.css";
+import "./tailwind.css";
+
+// import "./responsive.css";
 
   // Socials Import
   import {
@@ -496,6 +498,7 @@ useEffect(() => {
     return (  
       <>
   {/* <div className="first" style={styles.first}> */}
+  
   <div className="
   w-full
   flex
@@ -555,7 +558,7 @@ useEffect(() => {
     box-border
   "
 />
-     <br />
+     {/* <br /> */}
    <h4 className="text-sm sm:text-base md:text-lg lg:text-xl">
   Meba Burger
 </h4>
@@ -578,8 +581,31 @@ useEffect(() => {
   flex-wrap
   min-w-0
 ">
-    <div className="profile" style={styles.profile}>
+    {/* <div className="profile" style={styles.profile}> */}
+    <div className="
+  w-auto
+  sm:w-[220px]
+  md:w-[320px]
+  lg:w-[450px]
+
+  h-[65px]
+  sm:h-[80px]
+  md:h-[100px]
+  lg:h-[130px]
+
+  bg-yellow-300
+  rounded-[20px]
+
+  flex
+  items-center
+
+  px-2
+
+  min-w-0
+  flex-shrink
+">
       <img src={avatarImg} className="avatar" style={styles.avatar}/>
+     
 
        <select className="options" style={styles.options}>
         
@@ -590,7 +616,19 @@ useEffect(() => {
       </select>
     </div> 
 
-    <div className="cart" style={styles.cart}>
+    {/* <div className="cart" style={styles.cart}> */}
+    <div className="
+  flex
+  flex-col
+  items-center
+  justify-center
+
+  w-[50px]
+  sm:w-[65px]
+  md:w-[80px]
+
+  flex-shrink-0
+">
        <nav>
       <FaShoppingCart 
       onClick={() => setShowCart(!showCart)}
