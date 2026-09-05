@@ -498,53 +498,39 @@ useEffect(() => {
     return (  
       <>
   {/* <div className="first" style={styles.first}> */}
+  {/* // First div */}
   
-<div className="w-full flex flex-nowrap items-center border-b-2 border-black overflow-hidden">
-
+<div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border overflow-hidden">
 
 
     {/* <div className="logos" style={styles.logos}> */}
-  <div className="w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-pink-300 rounded-xl p-2">
- 
+ <div className="w-[25%] sm:w-[22%] md:w-[20%] lg:w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-pink-300 rounded-xl p-2">
 
   <img
-      src={mebaBurger}
-      className="w-[60%] max-w-[180px] h-auto object-contain"
-      alt="Meba Burger"
-    />
-     {/* <br /> */}
-   <h4 className="text-sm md:text-lg font-semibold">
-      Meba Burger
-    </h4>
+  src={mebaBurger}
+  className="w-[70%] sm:w-[70%] md:w-[70%] lg:w-[70%] max-w-[180px] h-auto object-contain"
+  alt="Meba Burger"
+/>
+ <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
+  Meba Burger
+</h4>
 
 
     </div>
+    {/* // For the right side */}
 
-<div className="
-  w-full
-  sm:w-auto
+<div className="flex-1 min-w-0 flex items-center justify-end gap-1 sm:gap-2 md:gap-4">
 
-  flex
-  items-center
-  justify-center
-  sm:justify-end
-
-  gap-2
-  sm:gap-3
-
-  flex-wrap
-  min-w-0
-">
     {/* <div className="profile" style={styles.profile}> */}
-     <div className="w-[40%] flex-shrink-0 flex items-center justify-center bg-yellow-300 rounded-xl p-2">
+    {/* // Profile */}
+    <div className="w-[55%] sm:w-[55%] md:w-[55%] lg:w-[55%] flex-shrink-0 flex items-center justify-center bg-yellow-300 rounded-xl p-2">
+     <img
+  src={avatarImg}
+  className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0"
+  alt="Profile"
+/>
 
-      <img
-      src={avatarImg}
-      className="w-10 h-10 md:w-16 md:h-16 rounded-full object-cover flex-shrink-0"
-      alt="Profile"
-    />
-
-         <select className="min-w-0 w-[70%] ml-2 text-xs md:text-base p-2 rounded-lg">
+        <select className="min-w-0 w-[70%] ml-1 sm:ml-2 h-7 sm:h-9 md:h-10 text-[9px] sm:text-xs md:text-sm lg:text-base px-1 sm:px-2 rounded-lg">
       <option>Choose an Action</option>
       <option>Profile</option>
       <option>Logout</option>
@@ -552,27 +538,29 @@ useEffect(() => {
     </div> 
 
     {/* <div className="cart" style={styles.cart}> */}
-   <div className="w-[15%] flex-shrink-0 flex flex-col items-center justify-center">
+    {/* // Cart */}
+  <div className="w-[15%] flex-shrink-0 flex flex-col items-center justify-center">
 
-      
        <FaShoppingCart
-      onClick={() => setShowCart(!showCart)}
-      className="text-green-600 text-3xl md:text-5xl cursor-pointer"
-    />
-       <span className="text-xs md:text-base">
-      Cart
-    </span>
+  onClick={() => setShowCart(!showCart)}
+  className="text-green-600 text-2xl sm:text-3xl md:text-4xl cursor-pointer"
+/>
+
+<span className="text-[9px] sm:text-xs md:text-sm">
+  Cart
+</span>
    
    
     </div>
+    {/* //Signup/Login */}
     <div className="w-[20%] flex-shrink-0 flex justify-center items-center">
 
-       <button
-      onClick={() => setSignIn(true)}
-      className="text-xs md:text-base whitespace-nowrap"
-    >
-      SignUp/Login
-    </button>
+     <button
+  onClick={() => setSignIn(true)}
+  className="text-[9px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap"
+>
+  SignUp/Login
+</button>
     </div>
 </div>
   </div>  
