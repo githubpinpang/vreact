@@ -565,9 +565,31 @@ useEffect(() => {
 </div>
   </div>  
                    {/* Menu Divs */}
-  <div className="second" style={styles.second}>
-
-    <div className="menu" style={styles.menu}>
+                   {/* Second Div */}
+  {/* <div className="second" style={styles.second}> */}
+  <div className="
+  second
+  flex
+  gap-6
+  p-4
+  w-full
+  items-stretch
+  box-border
+  overflow-hidden
+  h-[700px]
+">
+                    {/* Menu Div */}
+  <div className="
+  menu
+  w-[300px]
+  min-w-[300px]
+  h-full
+  bg-gray-300
+  rounded-2xl
+  text-center
+  flex-shrink-0
+  overflow-y-auto
+">
        <button style={{
         ...styles.menuTitle, color: hover ? "red" : "black",transition: "0.3s",
         }}
@@ -603,12 +625,36 @@ useEffect(() => {
     </div>
 
     
-  <div className="table" style={styles.table}>
-
+  {/* <div className="table" style={styles.table}> */}
+                           {/* Brown Table */}
+        <div className="
+  table
+  flex-1
+  min-w-0
+  h-full
+  bg-orange-500
+  rounded-2xl
+  overflow-x-auto
+  overflow-y-auto
+  box-border
+">
 
             <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} /> 
 
-     <div className="menuList" style={styles.menuList}>
+     {/* <div className="menuList" style={styles.menuList}> */}
+     {/* Menu List Div */}
+     <div className="
+  menuList
+  min-w-[700px]
+  min-h-full
+  grid
+  grid-cols-2
+  gap-8
+  p-4
+  bg-[#6B3E1E]
+  rounded-2xl
+  box-border
+">
         {filteredFoods.map((food) => (
     <div key={food._id}>
        <h3>{food.Name}</h3>
