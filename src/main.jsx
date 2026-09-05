@@ -568,29 +568,141 @@ useEffect(() => {
                    {/* Second Div */}
   {/* <div className="second" style={styles.second}> */}
   <div className="
-  second
   flex
-  gap-6
-  p-4
   w-full
-  items-stretch
+  gap-3
+  p-3
   box-border
   overflow-hidden
-  h-[700px]
+  h-[calc(100vh-100px)]
+  min-h-[550px]
 ">
                     {/* Menu Div */}
-  <div className="
-  menu
-  w-[300px]
-  min-w-[300px]
+ <div className="
+  w-[25%]
+  min-w-[95px]
   h-full
   bg-gray-300
   rounded-2xl
-  text-center
   flex-shrink-0
-  overflow-y-auto
+  overflow-hidden
+  box-border
+  flex
+  flex-col
 ">
-       <button style={{
+
+      {/* Menu Title */}
+    {/* Menu Title */}
+  <div className="
+    h-[55px]
+    flex-shrink-0
+    w-full
+    flex
+    items-center
+    justify-center
+    border-b-[5px]
+    border-black
+    font-bold
+    text-lg
+  ">
+    Menu
+  </div>
+  
+   
+  {/* Menu Buttons */}
+  <div className="
+    flex-1
+    w-full
+    grid
+    grid-rows-5
+    gap-4
+    p-4
+    box-border
+  ">
+    <button
+      onClick={() => filterMenu("")}
+      className="
+        w-full
+        h-full
+        bg-pink-300
+        rounded-2xl
+        font-bold
+        text-sm
+        sm:text-base
+        shadow-[5px_5px_5px_red]
+      "
+    >
+      All
+    </button>
+
+    <button
+      onClick={() => filterMenu("Burger")}
+      className="
+        w-full
+        h-full
+        bg-pink-300
+        rounded-2xl
+        font-bold
+        text-sm
+        sm:text-base
+        shadow-[5px_5px_5px_red]
+      "
+    >
+      Burger
+    </button>
+<button
+      onClick={() => filterMenu("Pizza")}
+      className="
+        w-full
+        h-full
+        bg-pink-300
+        rounded-2xl
+        font-bold
+        text-sm
+        sm:text-base
+        shadow-[5px_5px_5px_red]
+      "
+    >
+      Pizza
+    </button>
+
+       <button
+      onClick={() => filterMenu("Juice")}
+      className="
+        w-full
+        h-full
+        bg-pink-300
+        rounded-2xl
+        font-bold
+        text-sm
+        sm:text-base
+        shadow-[5px_5px_5px_red]
+      "
+    >
+      Juice
+    </button>
+  <button
+      onClick={() => filterMenu("Sweets")}
+      className="
+        w-full
+        h-full
+        bg-pink-300
+        rounded-2xl
+        font-bold
+        text-sm
+        sm:text-base
+        shadow-[5px_5px_5px_red]
+      "
+    >
+      Sweets
+    </button>
+
+      </div>
+       </div>
+
+
+
+       {/* /* <button style={{
         ...styles.menuTitle, color: hover ? "red" : "black",transition: "0.3s",
         }}
          onMouseEnter={() => setHover(true)}
@@ -610,9 +722,9 @@ useEffect(() => {
       <button style={{...styles.Menus, color:hover ? 'red' : 'black' }}  onClick={() => filterMenu("Pizza")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        >Pizza</button> <br /><br /> <br /><br /> <br /><br />
+        >Pizza</button> <br /><br /> <br /><br /> <br /><br /> */
 
-      <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
+      /* <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Juice</button> <br /><br /> <br /><br /> <br /><br />
@@ -621,64 +733,107 @@ useEffect(() => {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Sweets</button> <br /><br /> <br /><br /> <br /><br />
-      {/* <button style={{styles.Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br /> */}
-    </div>
-
+      <button style={{styles.Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br />
+      */}
+</div>
     
   {/* <div className="table" style={styles.table}> */}
                            {/* Brown Table */}
-        <div className="
-  table
-  flex-1
-  min-w-0
-  h-full
-  bg-orange-500
-  rounded-2xl
-  overflow-x-auto
-  overflow-y-auto
-  box-border
-">
+     {/* ================= FOOD TABLE ================= */}
+  <div className="
+    flex-1
+    min-w-0
+    h-full
+    bg-orange-500
+    rounded-2xl
+    overflow-x-auto
+    overflow-y-auto
+    box-border
+  ">
 
-            <Cards foods={foods} setFoods={setFoods}   fetchFoods={fetchFoods} /> 
+{/* Probably to be commented code */}
+            <Cards
+      foods={foods}
+      setFoods={setFoods}
+      fetchFoods={fetchFoods}
+    />
+
 
      {/* <div className="menuList" style={styles.menuList}> */}
      {/* Menu List Div */}
-     <div className="
+    {/* Food List */}
+    <div className="
   menuList
-  min-w-[700px]
-  min-h-full
+  min-w-[650px]
+  w-max
   grid
   grid-cols-2
-  gap-8
+  gap-4
   p-4
   bg-[#6B3E1E]
   rounded-2xl
   box-border
+  items-start
+  content-start
 ">
         {filteredFoods.map((food) => (
-    <div key={food._id}>
-       <h3>{food.Name}</h3>
-       {food.Image && (
-         <img
-        // src={`http://localhost:5000/uploads/${food.Image}`}
-        src={`https://meba-api.onrender.com/uploads/${food.Image}`}
-        // https://meba-api.onrender.com/food/API/fooditem
-        width="150"
-        height="150"
-        style={{borderRadius: "10px"}}
-      />
-      )}
+
+        <div
+          key={food._id}
+          className="
+            bg-white
+            rounded-xl
+            p-3
+            min-w-0
+            overflow-hidden
+          "
+        >
+
+        <h3 className="font-bold text-lg">
+            {food.Name}
+          </h3>
+
+      {food.Image && (
+            <img
+              src={`https://meba-api.onrender.com/uploads/${food.Image}`}
+              alt={food.Name}
+              className="
+                w-[150px]
+                h-[150px]
+                object-cover
+                rounded-xl
+                max-w-full
+              "
+            />
+          )}
       
-      <p>{food.Price}</p>
-       <p>{food.Name}</p>
+      <p className="font-semibold">
+            {food.Price} ETB
+          </p>
+
+          <p>
+            {food.Name}
+          </p>
+
+            <button
+            onClick={() => addToCart(food)}
+            className="
+              bg-green-500
+              text-white
+              px-4
+              py-2
+              rounded-lg
+              font-bold
+            "
+          >
+            Order
+          </button>
       {/* <p>{food.Category}</p> */}
 
 
  
 
-    <button onClick={() => addToCart(food)}>
-      Order
-    </button>
+   
   </div>
 ))}
        
@@ -689,43 +844,58 @@ useEffect(() => {
 
   {/* <div className="cartDiv" style={cartDiv}> */}
      {/* <span>Cart</span> */}
-     {showCart && (
-  <div className="cartDiv" style={styles.cartDiv}>
-
-
-    <button
-      className="cartClose"
-      onClick={() => setShowCart(false)}
-      aria-label="Close cart"
+      {/* ================= CART ================= */}
+  {showCart && (
+    <div
+      className="cartDiv"
+      style={styles.cartDiv}
     >
-      ✕
-    </button>
-    <h2>Shopping Cart</h2>
-   {cartItems.length === 0 ? (
-  <p>Your cart is empty.</p>
-) : (
-  cartItems.map((item, index) => (
-    <div key={index}>
-      <h4>{item.Name}</h4>
-      <p>{`Price: ${item.Price} ETB`}</p>
 
-      {item.Image && (
-        <img
-           //src={`http://localhost:5000/uploads/${item.Image}`}
-           src={`https://meba-api.onrender.com/uploads/${item.Image}`}
-           alt={item.Name}
-           width="70"
-           height="70" 
-        />
-      )} <br /> <br />
-      <button> Checkout </button>
-    </div>
-  ))
-)}
+     <button
+        className="cartClose"
+        onClick={() => setShowCart(false)}
+        aria-label="Close cart"
+      >
+        ❌
+      </button>
+
+    <h2>Shopping Cart</h2>
+
+     {cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        cartItems.map((item, index) => (
+          <div key={index}>
+
+            <h4>{item.Name}</h4>
+
+            <p>
+              Price: {item.Price} ETB
+            </p>
+
+ {item.Image && (
+              <img
+                src={`https://meba-api.onrender.com/uploads/${item.Image}`}
+                alt={item.Name}
+                width="70"
+                height="70"
+              />
+            )}
+
+            <br />
+            <br />
+
+            <button>
+              Checkout
+            </button>
+
+          </div>
+ ))
+      )}
   </div>
 )}
   
-  </div>
+  
 
   {signIn && (
     <div style={styles.overlayStyle}>
