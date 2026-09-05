@@ -499,69 +499,23 @@ useEffect(() => {
       <>
   {/* <div className="first" style={styles.first}> */}
   
-  <div className="
-  w-full
-  flex
-  flex-col
-  gap-3
-  border-b-[3px]
-  border-black
-  p-2
-  box-border
+<div className="w-full flex flex-nowrap items-center border-b-2 border-black overflow-hidden">
 
-  sm:flex-row
-  sm:items-center
-  sm:justify-between
-  sm:gap-2
-">
+
 
     {/* <div className="logos" style={styles.logos}> */}
-    <div className="
-  w-full
-  sm:w-[180px]
-  md:w-[220px]
-  lg:w-[300px]
+  <div className="w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-pink-300 rounded-xl p-2">
+ 
 
-  h-auto
-  sm:h-[120px]
-  md:h-[150px]
-  lg:h-[180px]
-
-  bg-pink-300
-  rounded-[20px]
-
-  flex
-  flex-col
-  items-center
-  justify-center
-
-  box-border
-">
-
-   <img
-  src={mebaBurger}
-  className="
-    w-[90px]
-    h-[70px]
-
-    sm:w-[110px]
-    sm:h-[80px]
-
-    md:w-[140px]
-    md:h-[100px]
-
-    lg:w-[180px]
-    lg:h-[130px]
-
-    object-contain
-    p-2
-    box-border
-  "
-/>
+  <img
+      src={mebaBurger}
+      className="w-[60%] max-w-[180px] h-auto object-contain"
+      alt="Meba Burger"
+    />
      {/* <br /> */}
-   <h4 className="text-sm sm:text-base md:text-lg lg:text-xl">
-  Meba Burger
-</h4>
+   <h4 className="text-sm md:text-lg font-semibold">
+      Meba Burger
+    </h4>
 
 
     </div>
@@ -582,70 +536,43 @@ useEffect(() => {
   min-w-0
 ">
     {/* <div className="profile" style={styles.profile}> */}
-    <div className="
-  w-auto
-  sm:w-[220px]
-  md:w-[320px]
-  lg:w-[450px]
+     <div className="w-[40%] flex-shrink-0 flex items-center justify-center bg-yellow-300 rounded-xl p-2">
 
-  h-[65px]
-  sm:h-[80px]
-  md:h-[100px]
-  lg:h-[130px]
+      <img
+      src={avatarImg}
+      className="w-10 h-10 md:w-16 md:h-16 rounded-full object-cover flex-shrink-0"
+      alt="Profile"
+    />
 
-  bg-yellow-300
-  rounded-[20px]
-
-  flex
-  items-center
-
-  px-2
-
-  min-w-0
-  flex-shrink
-">
-      <img src={avatarImg} className="avatar" style={styles.avatar}/>
-     
-
-       <select className="options" style={styles.options}>
-        
-        <option value="">Choose an Action</option>
-        <option value="apple">Profile</option>
-        <option value="banana">Banana</option>
-        <option value="orange" >Logout</option>
-      </select>
+         <select className="min-w-0 w-[70%] ml-2 text-xs md:text-base p-2 rounded-lg">
+      <option>Choose an Action</option>
+      <option>Profile</option>
+      <option>Logout</option>
+    </select>
     </div> 
 
     {/* <div className="cart" style={styles.cart}> */}
-    <div className="
-  flex
-  flex-col
-  items-center
-  justify-center
+   <div className="w-[15%] flex-shrink-0 flex flex-col items-center justify-center">
 
-  w-[50px]
-  sm:w-[65px]
-  md:w-[80px]
-
-  flex-shrink-0
-">
-       <nav>
-      <FaShoppingCart 
+      
+       <FaShoppingCart
       onClick={() => setShowCart(!showCart)}
-      style={{
-        color: "green",
-        fontSize: "35px",
-        cursor: "pointer",
-        height:'50px',
-        width: '80px'
-      }}
-      />
-      <span>Cart</span>
-    </nav>
+      className="text-green-600 text-3xl md:text-5xl cursor-pointer"
+    />
+       <span className="text-xs md:text-base">
+      Cart
+    </span>
+   
    
     </div>
-    <div style={styles.signUp}>
-      <button onClick={() => setSignIn(true)} > SignUp/LogIn</button>
+    <div className="w-[20%] flex-shrink-0 flex justify-center items-center">
+
+       <button
+      onClick={() => setSignIn(true)}
+      className="text-xs md:text-base whitespace-nowrap"
+    >
+      SignUp/Login
+    </button>
     </div>
 </div>
   </div>  
