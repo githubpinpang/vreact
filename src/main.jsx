@@ -1,3 +1,4 @@
+// jsx
 import React, {useState, useEffect} from "react";
 import {createRoot} from 'react-dom/client';
 import ReactDOM from 'react-dom/client';
@@ -500,7 +501,7 @@ useEffect(() => {
   {/* <div className="first" style={styles.first}> */}
   {/* // First div */}
   
-<div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border overflow-hidden">
+<div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border">
 
 
     {/* <div className="logos" style={styles.logos}> */}
@@ -567,29 +568,58 @@ useEffect(() => {
                    {/* Menu Divs */}
                    {/* Second Div */}
   {/* <div className="second" style={styles.second}> */}
-  <div className="
-  flex
-  w-full
-  gap-3
-  p-3
-  box-border
-  overflow-hidden
-  h-[calc(100vh-100px)]
-  min-h-[550px]
-">
+
+  {/* ================= MAIN MENU + FOOD CONTAINER ================= */}
+  {/* IMPORTANT: this outer div scrolls horizontally on small screens */}
+  <div
+    className="
+      w-full
+      overflow-x-auto
+      overflow-y-hidden
+      box-border
+    "
+    style={{
+      marginTop: "20px",
+      padding: "12px",
+      boxSizing: "border-box"
+    }}
+  >
+
+  {/* ================= ACTUAL SIDE-BY-SIDE ROW ================= */}
+  <div
+    className="
+      flex
+      flex-row
+      flex-nowrap
+      items-start
+      gap-3
+      box-border
+    "
+    style={{
+      width: "100%",
+      minWidth: "760px"
+    }}
+  >
+
                     {/* Menu Div */}
- <div className="
-  w-[25%]
-  min-w-[95px]
-  h-full
-  bg-gray-300
-  rounded-2xl
-  flex-shrink-0
-  overflow-hidden
-  box-border
-  flex
-  flex-col
-">
+
+ <div
+  className="
+    flex
+    flex-col
+    flex-shrink-0
+    bg-gray-300
+    rounded-2xl
+    overflow-hidden
+    box-border
+  "
+  style={{
+    width: "220px",
+    minWidth: "220px",
+    height: "calc(100vh - 140px)",
+    minHeight: "550px"
+  }}
+>
 
       {/* Menu Title */}
     {/* Menu Title */}
@@ -618,7 +648,11 @@ useEffect(() => {
     gap-4
     p-4
     box-border
-  ">
+  "
+  style={{
+    gridTemplateRows: "repeat(5, minmax(0, 1fr))"
+  }}
+  >
     <button
       onClick={() => filterMenu("")}
       className="
@@ -650,7 +684,8 @@ useEffect(() => {
     >
       Burger
     </button>
-<button
+
+    <button
       onClick={() => filterMenu("Pizza")}
       className="
         w-full
@@ -681,6 +716,7 @@ useEffect(() => {
     >
       Juice
     </button>
+
   <button
       onClick={() => filterMenu("Sweets")}
       className="
@@ -724,8 +760,7 @@ useEffect(() => {
         onMouseLeave={() => setHover(false)}
         >Pizza</button> <br /><br /> <br /><br /> <br /><br /> */
 
-      /* <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => filterMenu("Juice")} 
-        onMouseEnter={() => setHover(true)}
+      /* <button style={{...styles.Menus, color:hover ? 'red' : 'black'}}  onClick={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         >Juice</button> <br /><br /> <br /><br /> <br /><br />
 
@@ -735,21 +770,29 @@ useEffect(() => {
         >Sweets</button> <br /><br /> <br /><br /> <br /><br />
       <button style={{styles.Menus}}  onClick={() => filterMenu("Soup")} >Soup</button> <br /><br /> <br /><br /> <br /><br />
       */}
-</div>
     
   {/* <div className="table" style={styles.table}> */}
                            {/* Brown Table */}
      {/* ================= FOOD TABLE ================= */}
-  <div className="
-    flex-1
-    min-w-0
-    h-full
-    bg-orange-500
-    rounded-2xl
-    overflow-x-auto
-    overflow-y-auto
-    box-border
-  ">
+
+  <div
+    className="
+      flex
+      flex-col
+      flex-shrink-0
+      bg-orange-500
+      rounded-2xl
+      overflow-y-auto
+      overflow-x-hidden
+      box-border
+    "
+    style={{
+      width: "calc(100% - 235px)",
+      minWidth: "525px",
+      height: "calc(100vh - 140px)",
+      minHeight: "550px"
+    }}
+  >
 
 {/* Probably to be commented code */}
             <Cards
@@ -762,20 +805,26 @@ useEffect(() => {
      {/* <div className="menuList" style={styles.menuList}> */}
      {/* Menu List Div */}
     {/* Food List */}
-    <div className="
-  menuList
-  min-w-[650px]
-  w-max
-  grid
-  grid-cols-2
-  gap-4
-  p-4
-  bg-[#6B3E1E]
-  rounded-2xl
-  box-border
-  items-start
-  content-start
-">
+
+  <div
+    className="
+      menuList
+      w-full
+      grid
+      gap-4
+      p-4
+      bg-[#6B3E1E]
+      rounded-2xl
+      box-border
+      items-start
+      content-start
+    "
+    style={{
+      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+      minWidth: "0"
+    }}
+  >
+
         {filteredFoods.map((food) => (
 
         <div
@@ -787,9 +836,14 @@ useEffect(() => {
             min-w-0
             overflow-hidden
           "
+          style={{
+            minWidth: "0",
+            width: "100%",
+            boxSizing: "border-box"
+          }}
         >
 
-        <h3 className="font-bold text-lg">
+        <h3 className="font-bold text-lg break-words">
             {food.Name}
           </h3>
 
@@ -828,6 +882,7 @@ useEffect(() => {
           >
             Order
           </button>
+
       {/* <p>{food.Category}</p> */}
 
 
@@ -841,6 +896,8 @@ useEffect(() => {
 
      </div>
     </div>
+
+  </div>
 
   {/* <div className="cartDiv" style={cartDiv}> */}
      {/* <span>Cart</span> */}
@@ -965,6 +1022,7 @@ useEffect(() => {
     </footer>
     
     </div>                
+    </div>
     </>
   )
 
