@@ -108,7 +108,7 @@ function Hello(){
       margin: '10px',
       width: '300px',
       height:"200px",
-      backgroundColor: "pink",
+      backgroundColor: "yellow",
       borderRadius: '20px',
       textAlign: 'center',
       border: "none",
@@ -196,7 +196,7 @@ function Hello(){
     },
 
     Menus :{
-      backgroundColor: 'pink',
+      backgroundColor: 'yellow',
       height: '50px',
       width: "100%",
       maxWidth: '150px',
@@ -262,7 +262,7 @@ function Hello(){
       width:'300px',
       minWidth: '280px',
       flexShrink: 0,
-      backgroundColor: 'pink',
+      backgroundColor: 'yellow',
       borderRadius: '15px',
       boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
       borderTop: '5px solid grey',
@@ -399,7 +399,7 @@ function Hello(){
     <>
       <div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border">
 
-        <div className="w-[25%] sm:w-[22%] md:w-[20%] lg:w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-pink-300 rounded-xl p-2">
+        <div className="w-[25%] sm:w-[22%] md:w-[20%] lg:w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-yellow-300 rounded-xl p-2">
           <img
             src={mebaBurger}
             className="w-[70%] sm:w-[70%] md:w-[70%] lg:w-[70%] max-w-[180px] h-auto object-contain"
@@ -483,35 +483,35 @@ function Hello(){
             <div className="flex-1 w-full flex flex-col justify-evenly p-4 box-border">
               <button
                 onClick={() => filterMenu("")}
-                className="w-full h-12 md:h-14 bg-pink-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
               >
                 All
               </button>
 
               <button
                 onClick={() => filterMenu("Burger")}
-                className="w-full h-12 md:h-14 bg-pink-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
               >
                 Burger
               </button>
 
               <button
                 onClick={() => filterMenu("Pizza")}
-                className="w-full h-12 md:h-14 bg-pink-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
               >
                 Pizza
               </button>
 
               <button
                 onClick={() => filterMenu("Juice")}
-                className="w-full h-12 md:h-14 bg-pink-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
               >
                 Juice
               </button>
 
               <button
                 onClick={() => filterMenu("Sweets")}
-                className="w-full h-12 md:h-14 bg-pink-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
               >
                 Sweets
               </button>
