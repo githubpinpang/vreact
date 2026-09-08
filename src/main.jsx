@@ -19,8 +19,6 @@ import { use } from "react";
 
 import "./tailwind.css";
 
-// import "./responsive.css";
-
 // Socials Import
 import {
   FaFacebook,
@@ -630,12 +628,14 @@ function Hello(){
                 )}
               </div>
 
-              {/* Fixed Bottom Total Amount Button */}
-              <div className="flex-shrink-0 mt-3 pt-2 border-t border-gray-400">
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-xl shadow-md transition-all text-xs sm:text-sm">
-                  Total: {totalAmount} ETB
-                </button>
-              </div>
+              {/* Fixed Bottom Total Amount Button - ONLY render if cart has items */}
+              {cartItems.length > 0 && (
+                <div className="flex-shrink-0 mt-3 pt-2 border-t border-gray-400">
+                  <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-xl shadow-md transition-all text-xs sm:text-sm">
+                    Total: {totalAmount} ETB
+                  </button>
+                </div>
+              )}
 
             </div>
           )}
