@@ -1,4 +1,3 @@
-// jsx
 import React, {useState, useEffect} from "react";
 import {createRoot} from 'react-dom/client';
 import ReactDOM from 'react-dom/client';
@@ -339,19 +338,23 @@ const styles = {
   },
 
    cartDiv :{
-    minHeight: '800px',
-    maxHeight: '100vh',
+    height: 'calc(100vh - 140px)',
+    minHeight: '550px',
+    maxHeight: 'calc(100vh - 140px)',
     overflowY: 'auto',
-    width:'300px',
+    width:'320px',
     // display:'none',
     backgroundColor: 'pink',
-    borderRadius: '10px',
-    position: 'absolute',
-    right: '15px',
-    top: '200px',
-    boxShadow: '5px 5px 5px 5px grey',
+    borderRadius: '15px',
+    position: 'fixed',
+    right: '20px',
+    top: '110px',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.25)',
     borderTop: '5px solid grey',
-    textAlign: 'center'
+    textAlign: 'center',
+    zIndex: 1000,
+    boxSizing: 'border-box',
+    padding: '15px'
   }
 ,
    socialIcons :{
@@ -643,21 +646,19 @@ useEffect(() => {
   <div className="
     flex-1
     w-full
-    grid
-    grid-rows-5
-    gap-4
+    flex
+    flex-col
+    justify-evenly
     p-4
     box-border
   "
-  style={{
-    gridTemplateRows: "repeat(5, minmax(0, 1fr))"
-  }}
   >
     <button
       onClick={() => filterMenu("")}
       className="
         w-full
-        h-full
+        h-12
+        md:h-14
         bg-pink-300
         rounded-2xl
         font-bold
@@ -673,7 +674,8 @@ useEffect(() => {
       onClick={() => filterMenu("Burger")}
       className="
         w-full
-        h-full
+        h-12
+        md:h-14
         bg-pink-300
         rounded-2xl
         font-bold
@@ -689,7 +691,8 @@ useEffect(() => {
       onClick={() => filterMenu("Pizza")}
       className="
         w-full
-        h-full
+        h-12
+        md:h-14
         bg-pink-300
         rounded-2xl
         font-bold
@@ -705,7 +708,8 @@ useEffect(() => {
       onClick={() => filterMenu("Juice")}
       className="
         w-full
-        h-full
+        h-12
+        md:h-14
         bg-pink-300
         rounded-2xl
         font-bold
@@ -721,7 +725,8 @@ useEffect(() => {
       onClick={() => filterMenu("Sweets")}
       className="
         w-full
-        h-full
+        h-12
+        md:h-14
         bg-pink-300
         rounded-2xl
         font-bold
@@ -785,6 +790,7 @@ useEffect(() => {
       overflow-y-auto
       overflow-x-hidden
       box-border
+      p-2
     "
     style={{
       width: "calc(100% - 235px)",
@@ -804,23 +810,23 @@ useEffect(() => {
 
      {/* <div className="menuList" style={styles.menuList}> */}
      {/* Menu List Div */}
-    {/* Food List */}
+    {/* Food List - Configured with flexbox justify-evenly to scatter cards evenly regardless of count */}
 
   <div
     className="
       menuList
       w-full
-      grid
+      flex
+      flex-wrap
+      justify-evenly
+      items-stretch
       gap-4
-      p-4
+      p-3
       bg-[#6B3E1E]
       rounded-2xl
       box-border
-      items-start
-      content-start
     "
     style={{
-      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
       minWidth: "0"
     }}
   >
@@ -832,18 +838,29 @@ useEffect(() => {
           className="
             bg-white
             rounded-xl
-            p-3
-            min-w-0
+            p-2.5
+            flex-1
+            min-w-[160px]
+            max-w-[220px]
             overflow-hidden
+            shadow-md
+            hover:shadow-lg
+            transition-all
+            duration-200
+            flex
+            flex-col
+            items-center
+            justify-between
+            text-center
+            border
+            border-amber-100
           "
           style={{
-            minWidth: "0",
-            width: "100%",
             boxSizing: "border-box"
           }}
         >
 
-        <h3 className="font-bold text-lg break-words">
+        <h3 className="font-bold text-xs sm:text-sm text-gray-800 line-clamp-1 w-full text-center">
             {food.Name}
           </h3>
 
@@ -852,36 +869,40 @@ useEffect(() => {
               src={`https://meba-api.onrender.com/uploads/${food.Image}`}
               alt={food.Name}
               className="
-                w-[150px]
-                h-[150px]
+                w-[85px]
+                h-[85px]
                 object-cover
-                rounded-xl
-                max-w-full
+                rounded-lg
+                my-1.5
+                shadow-sm
               "
             />
           )}
       
-      <p className="font-semibold">
-            {food.Price} ETB
+      <div className="w-full flex items-center justify-between gap-1 mt-1 pt-1.5 border-t border-gray-100">
+          <p className="font-bold text-xs text-gray-800">
+            {food.Price} <span className="text-[9px] font-semibold text-gray-500">ETB</span>
           </p>
 
-          <p>
-            {food.Name}
-          </p>
-
-            <button
+          <button
             onClick={() => addToCart(food)}
             className="
               bg-green-500
+              hover:bg-green-600
+              active:scale-95
               text-white
-              px-4
-              py-2
-              rounded-lg
+              px-2
+              py-1
+              rounded-md
+              text-xs
               font-bold
+              transition-all
+              shadow-sm
             "
           >
             Order
           </button>
+      </div>
 
       {/* <p>{food.Category}</p> */}
 
@@ -909,24 +930,24 @@ useEffect(() => {
     >
 
      <button
-        className="cartClose"
+        className="cartClose cursor-pointer float-right text-lg font-bold"
         onClick={() => setShowCart(false)}
         aria-label="Close cart"
       >
         ❌
       </button>
 
-    <h2>Shopping Cart</h2>
+    <h2 className="text-lg font-bold mb-4">Shopping Cart</h2>
 
      {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         cartItems.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="mb-4 p-2 bg-white rounded-lg shadow-sm">
 
-            <h4>{item.Name}</h4>
+            <h4 className="font-bold text-sm">{item.Name}</h4>
 
-            <p>
+            <p className="text-xs font-semibold my-1">
               Price: {item.Price} ETB
             </p>
 
@@ -936,13 +957,11 @@ useEffect(() => {
                 alt={item.Name}
                 width="70"
                 height="70"
+                className="mx-auto rounded-md object-cover my-2"
               />
             )}
 
-            <br />
-            <br />
-
-            <button>
+            <button className="bg-green-600 text-white text-xs px-3 py-1 rounded font-bold hover:bg-green-700">
               Checkout
             </button>
 
@@ -1059,4 +1078,4 @@ createRoot(document.getElementById('root')).render(
     
     
 //     return;
-// }
+// } 
