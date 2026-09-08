@@ -3,33 +3,34 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 export default function Users() {
-  // Original style objects with preserved inline comments
+
   const formStyle = {
     display: "flex",
     justifyContent: "center",
     marginTop: "30px",
-    //  border: "2px solid red",
-    // flexDirection: "center"
+  //  border: "2px solid red",
+   // flexDirection: "center"
   };
 
   const forms = {
     //display: "inline-block",
-    // width: "100px",
-    margin: "center",
+   // width: "100px",
+   margin: "center",
     padding: "15px",
-    border: "2px solid red",
+     border: "2px solid red",
   };
 
   const labels = {
     display: "inline-block",
     width: "100px",
     padding: "10px",
-    marginBottom: "5px",
-  };
+    marginBottom: "5px"
+  }
 
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
-  //  const [showPassword, setshowPassword] = useState(false);
+//  const [showPassword, setshowPassword] = useState(false);
 
   const [admins, setAdmins] = useState([]);
 
@@ -39,8 +40,6 @@ export default function Users() {
 
   const register = async (e) => {
     e.preventDefault();
-    
-    // Updated endpoint while preserving previous local reference
     // const response = await fetch("http://localhost:5000/Vs/API/signup", {
     const response = await fetch("https://meba-api.onrender.com/Vs/API/signup", {
       method: "POST",
@@ -50,8 +49,8 @@ export default function Users() {
       body: JSON.stringify({
         Email: email,
         Password: password,
-        role: "admin",
-      }),
+        role: "admin"
+      })
     });
 
     const data = await response.json();
@@ -66,7 +65,7 @@ export default function Users() {
     }
 
     // setAdmins(data);
-  };
+  }
 
   const fetchAdmins = async () => {
     try {
@@ -80,166 +79,172 @@ export default function Users() {
     }
   };
 
-  // Modern CSS styling objects to keep the layout centered & visually appealing
-  const containerStyle = {
+  // Styling matching the Main Page color palette (Pink, Yellow, Orange #F28C00, Brown #6B3E1E, Red shadows)
+  const mainContainerStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
     padding: "20px",
-    boxSizing: "border-box",
+    boxSizing: "border-box"
   };
 
-  const formCardStyle = {
-    backgroundColor: "#ffffff",
-    padding: "25px 30px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.08)",
+  const formCardTheme = {
+    backgroundColor: "pink",
+    padding: "25px",
+    borderRadius: "20px",
+    boxShadow: "5px 5px 5px red",
     width: "100%",
-    maxWidth: "450px",
+    maxWidth: "400px",
     marginBottom: "40px",
-    border: "1px solid #e2e8f0",
-  };
-
-  const formGroupStyle = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
+    boxSizing: "border-box",
+    textAlign: "center"
   };
 
   const inputGroupStyle = {
     display: "flex",
     flexDirection: "column",
-    textAlign: "left",
+    alignItems: "flex-start",
+    marginBottom: "15px"
   };
 
-  const labelStyle = {
-    fontWeight: "600",
-    marginBottom: "6px",
-    color: "#2d3748",
-    fontSize: "14px",
+  const labelTheme = {
+    fontWeight: "bold",
+    marginBottom: "5px",
+    color: "#000000",
+    fontSize: "14px"
   };
 
-  const inputStyle = {
-    padding: "10px 12px",
-    borderRadius: "8px",
-    border: "1px solid #cbd5e0",
-    fontSize: "14px",
+  const inputTheme = {
+    width: "100%",
+    padding: "10px",
+    borderRadius: "10px",
+    border: "2px solid #6B3E1E",
     outline: "none",
+    boxSizing: "border-box",
+    backgroundColor: "#ffffff",
+    fontSize: "14px"
   };
 
-  const buttonStyle = {
-    backgroundColor: "#3182ce",
+  const buttonTheme = {
+    backgroundColor: "#22c55e", // Order/Action button green from main page
     color: "white",
     border: "none",
-    padding: "12px",
-    borderRadius: "8px",
+    padding: "12px 25px",
+    borderRadius: "15px",
     fontWeight: "bold",
+    fontSize: "15px",
     cursor: "pointer",
-    fontSize: "14px",
+    boxShadow: "3px 3px 5px rgba(0,0,0,0.2)",
     marginTop: "10px",
+    width: "100%"
   };
 
-  const tableContainerStyle = {
+  const tableContainerTheme = {
     width: "100%",
     maxWidth: "600px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "center"
   };
 
-  const tableStyle = {
+  const tableTheme = {
     width: "100%",
-    borderCollapse: "collapse",
-    backgroundColor: "#ffffff",
-    borderRadius: "12px",
+    borderCollapse: "separate",
+    borderSpacing: 0,
+    backgroundColor: "#F28C00", // Main page food table background
+    borderRadius: "20px",
     overflow: "hidden",
-    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.08)",
-    border: "1px solid #e2e8f0",
+    boxShadow: "5px 5px 5px red", // Signature main page red drop-shadow
+    border: "3px solid black"
   };
 
-  const thStyle = {
-    backgroundColor: "#2d3748",
+  const thTheme = {
+    backgroundColor: "#6B3E1E", // Deep brown from menu list header
     color: "#ffffff",
-    padding: "14px 20px",
+    padding: "15px 20px",
     textAlign: "left",
-    fontSize: "14px",
+    fontSize: "15px",
+    fontWeight: "bold",
+    borderBottom: "3px solid black"
+  };
+
+  const tdTheme = {
+    padding: "12px 20px",
+    borderBottom: "1px solid #6B3E1E",
+    color: "#000000",
     fontWeight: "600",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
+    fontSize: "14px"
   };
 
-  const tdStyle = {
-    padding: "14px 20px",
-    borderBottom: "1px solid #edf2f7",
-    color: "#4a5568",
-    fontSize: "14px",
-  };
-
-  const badgeStyle = {
-    backgroundColor: "#e2e8f0",
-    color: "#2d3748",
-    padding: "4px 10px",
+  const badgeTheme = {
+    backgroundColor: "pink",
+    color: "#000000",
+    padding: "4px 12px",
     borderRadius: "12px",
     fontSize: "12px",
     fontWeight: "bold",
-    display: "inline-block",
+    border: "1px solid black",
+    display: "inline-block"
   };
 
   return (
-    <div style={containerStyle}>
-      {/* Create Admin Form Section */}
-      <div style={formCardStyle}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#1a202c" }}>
+    <div style={mainContainerStyle}>
+      {/* Registration Form Card */}
+      <div style={formCardTheme}>
+        <h2 style={{ marginBottom: "20px", fontWeight: "bold", borderBottom: "3px solid black", paddingBottom: "10px" }}>
           Create Admin User
         </h2>
-        <form onSubmit={register} style={formGroupStyle}>
+
+        <form onSubmit={register}>
           <div style={inputGroupStyle}>
-            <label style={labelStyle}>Email Address</label>
+            <label style={labelTheme}>Email:</label>
             <input
               type="email"
-              placeholder="admin@example.com"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              style={inputTheme}
               required
-              style={inputStyle}
             />
           </div>
 
           <div style={inputGroupStyle}>
-            <label style={labelStyle}>Password</label>
+            <label style={labelTheme}>Password:</label>
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              style={inputTheme}
               required
-              style={inputStyle}
             />
           </div>
 
-          <button type="submit" style={buttonStyle}>
+          <button type="submit" style={buttonTheme}>
             Create
           </button>
         </form>
       </div>
 
       {/* Admin Users Table Section */}
-      <div style={tableContainerStyle}>
-        <h2 style={{ marginBottom: "20px", color: "#1a202c" }}>Admin Users</h2>
+      <div style={tableContainerTheme}>
+        <h2 style={{ marginBottom: "15px", fontWeight: "bold", textDecoration: "underline" }}>
+          Admin Users
+        </h2>
 
-        <table style={tableStyle}>
+        <table style={tableTheme}>
           <thead>
             <tr>
-              <th style={thStyle}>Email</th>
-              <th style={thStyle}>Role</th>
+              <th style={thTheme}>Email</th>
+              <th style={thTheme}>Role</th>
             </tr>
           </thead>
 
           <tbody>
             {admins.length === 0 ? (
               <tr>
-                <td colSpan="2" style={{ ...tdStyle, textAlign: "center", color: "#a0aec0" }}>
+                <td colSpan="2" style={{ ...tdTheme, textAlign: "center", color: "#ffffff" }}>
                   No admin users found.
                 </td>
               </tr>
@@ -248,12 +253,12 @@ export default function Users() {
                 <tr
                   key={admin._id || index}
                   style={{
-                    backgroundColor: index % 2 === 0 ? "#ffffff" : "#f7fafc",
+                    backgroundColor: index % 2 === 0 ? "#ffffff" : "#fff3c4", // Alternating rows between crisp white & warm food yellow
                   }}
                 >
-                  <td style={tdStyle}>{admin.Email}</td>
-                  <td style={tdStyle}>
-                    <span style={badgeStyle}>{admin.role}</span>
+                  <td style={tdTheme}>{admin.Email}</td>
+                  <td style={tdTheme}>
+                    <span style={badgeTheme}>{admin.role}</span>
                   </td>
                 </tr>
               ))
