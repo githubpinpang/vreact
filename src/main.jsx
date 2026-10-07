@@ -343,9 +343,41 @@ function Hello(){
     ? foods.filter((food) => food.Category === selectedCategory)
     : foods;
 
-  const addToCart = (food) => {
-    setCartItems(prev => [...prev, food]);
-    setShowCart(true);
+  // Add To Cart Function (Saves to backend API if logged in)
+  const addToCart = async (food) => {
+    if (isLoggedIn) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("https://meba-api.onrender.com/Vs/API/cart/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            foodId: food._id,
+            quantity: 1
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message || "Failed to add food to cart");
+          return;
+        }
+
+        setCartItems(prev => [...prev, food]);
+        setShowCart(true);
+
+      } catch (error) {
+        console.error("Cart API error:", error);
+        alert("Error adding item to cart!");
+      }
+    } else {
+      setCartItems(prev => [...prev, food]);
+      setShowCart(true);
+    }
   };
 
   const removeFromCart = (indexToRemove) => {
