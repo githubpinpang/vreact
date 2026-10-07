@@ -428,6 +428,33 @@ function Hello(){
     }
   };
 
+  // Logout Function
+  const logout = async () => {
+    try {
+      await fetch("https://meba-api.onrender.com/Vs/API/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+    } catch (error) {
+      console.log("Logout API error:", error);
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      setIsLoggedIn(false);
+      navigate("/");
+    }
+  };
+
+  const handleDropdownAction = (e) => {
+    const selected = e.target.value;
+    if (selected === "Logout") {
+      logout();
+    }
+  };
+
   return (  
     <>
       <div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border">
@@ -453,9 +480,13 @@ function Hello(){
                 className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0"
                 alt="Profile"
               />
-              <select className="min-w-0 w-[70%] ml-1 sm:ml-2 h-7 sm:h-9 md:h-10 text-[9px] sm:text-xs md:text-sm lg:text-base px-1 sm:px-2 rounded-lg">
-                <option>Choose an Action</option>
-                <option>Profile</option>
+              <select 
+                onChange={handleDropdownAction}
+                className="min-w-0 w-[70%] ml-1 sm:ml-2 h-7 sm:h-9 md:h-10 text-[9px] sm:text-xs md:text-sm lg:text-base px-1 sm:px-2 rounded-lg cursor-pointer"
+              >
+                <option value="">Choose an Action</option>
+                <option value="Profile">Profile</option>
+                <option value="Logout">Logout</option>
               </select>
             </div> 
           )}
@@ -471,15 +502,17 @@ function Hello(){
             </span>
           </div>
 
-          {/* SignUp/Login Button */}
-          <div className="w-[20%] flex-shrink-0 flex justify-center items-center">
-            <button
-              onClick={() => setSignIn(true)}
-              className="text-[9px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap"
-            >
-              SignUp/Login
-            </button>
-          </div>
+          {/* SignUp/Login Button - Hidden when logged in */}
+          {!isLoggedIn && (
+            <div className="w-[20%] flex-shrink-0 flex justify-center items-center">
+              <button
+                onClick={() => setSignIn(true)}
+                className="text-[9px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap"
+              >
+                SignUp/Login
+              </button>
+            </div>
+          )}
         </div>
       </div>  
 
