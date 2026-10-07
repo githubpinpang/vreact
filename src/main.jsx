@@ -292,15 +292,20 @@ function Hello(){
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      zIndex: 1000
+      zIndex: 1000,
+      padding: "15px",
+      boxSizing: "border-box"
     },
 
     modalStyle : {
-      width: "350px",
+      width: "90%",
+      maxWidth: "360px",
       background: "white",
-      padding: "25px",
-      borderRadius: "10px",
-      textAlign: "center"
+      padding: "20px",
+      borderRadius: "12px",
+      textAlign: "center",
+      boxSizing: "border-box",
+      boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
     },
 
     footer :{
@@ -396,11 +401,11 @@ function Hello(){
     }
   };
 
-  // Registration handler
+  // Registration handler using customer signup API endpoint
   const register = async () => {
     try {
       const response = await fetch(
-        "https://meba-api.onrender.com/Vs/API/register",
+        "https://meba-api.onrender.com/Vs/API/signup",
         {
           method: "POST",
           headers: {
@@ -429,137 +434,152 @@ function Hello(){
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    setIsLoggedIn(false);
+  };
+
   return (  
     <>
-      <div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border">
+      {/* Header Bar - Responsive for Mobile and Desktop */}
+      <div className="w-full flex items-center justify-between gap-2 border-b-2 border-black p-2 box-border flex-wrap sm:flex-nowrap">
 
-        <div className="w-[25%] sm:w-[22%] md:w-[20%] lg:w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-yellow-300 rounded-xl p-2">
+        {/* Logo Section */}
+        <div className="w-[45%] sm:w-[22%] md:w-[20%] lg:w-[25%] flex-shrink-0 flex flex-col items-center justify-center bg-yellow-300 rounded-xl p-1.5 sm:p-2">
           <img
             src={mebaBurger}
-            className="w-[70%] sm:w-[70%] md:w-[70%] lg:w-[70%] max-w-[180px] h-auto object-contain"
+            className="w-[70%] max-w-[120px] sm:max-w-[180px] h-auto object-contain"
             alt="Meba Burger"
           />
-          <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
+          <h4 className="text-[10px] sm:text-sm md:text-base lg:text-lg font-semibold">
             Meba Burger
           </h4>
         </div>
 
-        <div className="flex-1 min-w-0 flex items-center justify-end gap-1 sm:gap-2 md:gap-4">
+        {/* Right Header Navigation Section */}
+        <div className="flex-1 min-w-0 flex items-center justify-end gap-2 sm:gap-3 md:gap-4">
 
           {/* Profile Section - Rendered ONLY when logged in */}
           {isLoggedIn && (
-            <div className="w-[55%] sm:w-[55%] md:w-[55%] lg:w-[55%] flex-shrink-0 flex items-center justify-center bg-yellow-300 rounded-xl p-2">
+            <div className="flex-1 max-w-[180px] sm:max-w-[250px] flex-shrink-0 flex items-center justify-center bg-yellow-300 rounded-xl p-1 sm:p-2">
               <img
                 src={avatarImg}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0"
+                className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full object-cover flex-shrink-0"
                 alt="Profile"
               />
-              <select className="min-w-0 w-[70%] ml-1 sm:ml-2 h-7 sm:h-9 md:h-10 text-[9px] sm:text-xs md:text-sm lg:text-base px-1 sm:px-2 rounded-lg">
-                <option>Choose an Action</option>
-                <option>Profile</option>
+              <select
+                onChange={(e) => {
+                  if (e.target.value === "Logout") handleLogout();
+                }}
+                className="min-w-0 w-[70%] ml-1 sm:ml-2 h-7 sm:h-9 text-[9px] sm:text-xs md:text-sm px-1 rounded-lg bg-white border border-gray-300 cursor-pointer"
+              >
+                <option value="">Choose an Action</option>
+                <option value="Profile">Profile</option>
+                <option value="Logout">Logout</option>
               </select>
             </div> 
           )}
 
           {/* Cart Icon Button */}
-          <div className="w-[15%] flex-shrink-0 flex flex-col items-center justify-center">
+          <div className="flex-shrink-0 flex flex-col items-center justify-center px-1">
             <FaShoppingCart
               onClick={() => setShowCart(!showCart)}
-              className="text-green-600 text-2xl sm:text-3xl md:text-4xl cursor-pointer"
+              className="text-green-600 text-xl sm:text-3xl md:text-4xl cursor-pointer hover:scale-105 transition-transform"
             />
-            <span className="text-[9px] sm:text-xs md:text-sm">
+            <span className="text-[9px] sm:text-xs md:text-sm font-semibold">
               Cart
             </span>
           </div>
 
-          {/* SignUp/Login Button */}
-          <div className="w-[20%] flex-shrink-0 flex justify-center items-center">
-            <button
-              onClick={() => setSignIn(true)}
-              className="text-[9px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap"
-            >
-              SignUp/Login
-            </button>
+          {/* SignUp/Login or Logout Button */}
+          <div className="flex-shrink-0 flex justify-center items-center">
+            {!isLoggedIn ? (
+              <button
+                onClick={() => setSignIn(true)}
+                className="text-[10px] sm:text-xs md:text-sm lg:text-base bg-yellow-400 hover:bg-yellow-500 font-bold py-1 px-2.5 sm:px-4 rounded-lg shadow transition-all whitespace-nowrap"
+              >
+                SignUp/Login
+              </button>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="text-[10px] sm:text-xs md:text-sm lg:text-base bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2.5 sm:px-3 rounded-lg shadow transition-all whitespace-nowrap"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </div>  
 
-      {/* Main Container */}
+      {/* Main Container - Responsive flex layout for Mobile & Desktop */}
       <div
-        className="w-full overflow-x-auto overflow-y-hidden box-border"
+        className="w-full box-border"
         style={{
-          marginTop: "20px",
-          padding: "12px",
+          marginTop: "15px",
+          padding: "8px sm:12px",
           boxSizing: "border-box"
         }}
       >
-        <div
-          className="flex flex-row flex-nowrap items-start gap-3 box-border"
-          style={{
-            width: "100%",
-            minWidth: "760px"
-          }}
-        >
+        <div className="flex flex-col lg:flex-row items-start gap-3 w-full box-border">
+
           {/* Menu Div */}
           <div
-            className="flex flex-col flex-shrink-0 bg-gray-300 rounded-2xl overflow-hidden box-border"
+            className="w-full lg:w-[220px] lg:min-w-[220px] flex flex-col flex-shrink-0 bg-gray-300 rounded-2xl overflow-hidden box-border"
             style={{
-              width: "220px",
-              minWidth: "220px",
-              height: "calc(100vh - 140px)",
-              minHeight: "550px"
+              height: "auto",
+              minHeight: "auto"
             }}
           >
-            <div className="h-[55px] flex-shrink-0 w-full flex items-center justify-center border-b-[5px] border-black font-bold text-lg">
+            <div className="h-[45px] sm:h-[55px] flex-shrink-0 w-full flex items-center justify-center border-b-[4px] border-black font-bold text-base sm:text-lg">
               Menu
             </div>
             
-            <div className="flex-1 w-full flex flex-col justify-evenly p-4 box-border">
+            {/* Horizontal scrollable menu items on mobile, vertical stack on desktop */}
+            <div className="flex flex-row lg:flex-col justify-start lg:justify-evenly p-2 sm:p-4 gap-2 overflow-x-auto lg:overflow-visible box-border w-full">
               <button
                 onClick={() => filterMenu("")}
-                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="min-w-[80px] lg:min-w-0 flex-1 h-10 sm:h-12 lg:h-14 bg-yellow-300 rounded-xl lg:rounded-2xl font-bold text-xs sm:text-sm md:text-base shadow-[3px_3px_3px_red] sm:shadow-[5px_5px_5px_red] flex-shrink-0"
               >
                 All
               </button>
 
               <button
                 onClick={() => filterMenu("Burger")}
-                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="min-w-[80px] lg:min-w-0 flex-1 h-10 sm:h-12 lg:h-14 bg-yellow-300 rounded-xl lg:rounded-2xl font-bold text-xs sm:text-sm md:text-base shadow-[3px_3px_3px_red] sm:shadow-[5px_5px_5px_red] flex-shrink-0"
               >
                 Burger
               </button>
 
               <button
                 onClick={() => filterMenu("Pizza")}
-                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="min-w-[80px] lg:min-w-0 flex-1 h-10 sm:h-12 lg:h-14 bg-yellow-300 rounded-xl lg:rounded-2xl font-bold text-xs sm:text-sm md:text-base shadow-[3px_3px_3px_red] sm:shadow-[5px_5px_5px_red] flex-shrink-0"
               >
                 Pizza
               </button>
 
               <button
                 onClick={() => filterMenu("Juice")}
-                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="min-w-[80px] lg:min-w-0 flex-1 h-10 sm:h-12 lg:h-14 bg-yellow-300 rounded-xl lg:rounded-2xl font-bold text-xs sm:text-sm md:text-base shadow-[3px_3px_3px_red] sm:shadow-[5px_5px_5px_red] flex-shrink-0"
               >
                 Juice
               </button>
 
               <button
                 onClick={() => filterMenu("Sweets")}
-                className="w-full h-12 md:h-14 bg-yellow-300 rounded-2xl font-bold text-sm sm:text-base shadow-[5px_5px_5px_red]"
+                className="min-w-[80px] lg:min-w-0 flex-1 h-10 sm:h-12 lg:h-14 bg-yellow-300 rounded-xl lg:rounded-2xl font-bold text-xs sm:text-sm md:text-base shadow-[3px_3px_3px_red] sm:shadow-[5px_5px_5px_red] flex-shrink-0"
               >
                 Sweets
               </button>
             </div>
           </div>
 
-          {/* Food Table */}
+          {/* Food Table Container */}
           <div
-            className="flex flex-col bg-orange-500 rounded-2xl overflow-y-auto overflow-x-hidden box-border p-2"
+            className="w-full flex-1 flex flex-col bg-orange-500 rounded-2xl overflow-y-auto overflow-x-hidden box-border p-2 min-h-[450px] lg:min-h-[550px]"
             style={{
-              flex: "1 1 0%",
-              minWidth: "400px",
-              height: "calc(100vh - 140px)",
-              minHeight: "550px"
+              maxHeight: "calc(100vh - 120px)"
             }}
           >
             <Cards
@@ -569,13 +589,13 @@ function Hello(){
             />
 
             <div
-              className="menuList w-full flex flex-wrap justify-evenly items-stretch gap-4 p-3 bg-[#6B3E1E] rounded-2xl box-border"
+              className="menuList w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 p-2 sm:p-3 bg-[#6B3E1E] rounded-2xl box-border"
               style={{ minWidth: "0" }}
             >
               {filteredFoods.map((food) => (
                 <div
                   key={food._id}
-                  className="bg-white rounded-xl p-2.5 flex-1 min-w-[160px] max-w-[220px] overflow-hidden shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-between text-center border border-amber-100"
+                  className="bg-white rounded-xl p-2 sm:p-2.5 flex flex-col items-center justify-between text-center border border-amber-100 shadow-md hover:shadow-lg transition-all duration-200"
                   style={{ boxSizing: "border-box" }}
                 >
                   <h3 className="font-bold text-xs sm:text-sm text-gray-800 line-clamp-1 w-full text-center">
@@ -586,18 +606,18 @@ function Hello(){
                     <img
                       src={`https://meba-api.onrender.com/uploads/${food.Image}`}
                       alt={food.Name}
-                      className="w-[85px] h-[85px] object-cover rounded-lg my-1.5 shadow-sm"
+                      className="w-[65px] h-[65px] sm:w-[85px] sm:h-[85px] object-cover rounded-lg my-1 shadow-sm"
                     />
                   )}
               
                   <div className="w-full flex items-center justify-between gap-1 mt-1 pt-1.5 border-t border-gray-100">
-                    <p className="font-bold text-xs text-gray-800">
-                      {food.Price} <span className="text-[9px] font-semibold text-gray-500">ETB</span>
+                    <p className="font-bold text-[10px] sm:text-xs text-gray-800">
+                      {food.Price} <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500">ETB</span>
                     </p>
 
                     <button
                       onClick={() => addToCart(food)}
-                      className="bg-green-500 hover:bg-green-600 active:scale-95 text-white px-2 py-1 rounded-md text-xs font-bold transition-all shadow-sm"
+                      className="bg-green-500 hover:bg-green-600 active:scale-95 text-white px-2 py-1 rounded-md text-[10px] sm:text-xs font-bold transition-all shadow-sm"
                     >
                       Order
                     </button>
@@ -609,7 +629,7 @@ function Hello(){
 
           {/* Cart Section */}
           {showCart && (
-            <div className="cartDiv" style={styles.cartDiv}>
+            <div className="cartDiv w-full lg:w-[300px]" style={styles.cartDiv}>
 
               {/* Fixed Header */}
               <div className="flex-shrink-0 mb-3 pb-2 border-b border-gray-400">
@@ -675,50 +695,64 @@ function Hello(){
           )}
         </div>
 
-        {/* Login / Registration Modal */}
+        {/* Login / Registration Modal Popup */}
         {signIn && (
           <div style={styles.overlayStyle}>
             <div style={styles.modalStyle}>
-              <h2>{isRegistering ? "Register" : "Login"}</h2>
+              <h2 className="text-lg sm:text-xl font-bold mb-3">
+                {isRegistering ? "Customer Registration" : "Login"}
+              </h2>
 
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <div className="flex flex-col gap-2.5 my-2">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-2 sm:p-2.5 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 box-border"
+                />
 
-              <br /><br />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-2 sm:p-2.5 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 box-border"
+                />
+              </div>
 
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="flex gap-2 mt-3">
+                {isRegistering ? (
+                  <button
+                    onClick={register}
+                    className="flex-1 bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-3 rounded-lg text-xs sm:text-sm transition-all"
+                  >
+                    Register
+                  </button>
+                ) : (
+                  <button
+                    onClick={login}
+                    className="flex-1 bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-3 rounded-lg text-xs sm:text-sm transition-all"
+                  >
+                    Login
+                  </button>
+                )}
 
-              <br /><br />
-
-              {isRegistering ? (
-                <button onClick={register}>Register</button>
-              ) : (
-                <button onClick={login}>Login</button>
-              )}
-
-              <button
-                onClick={() => {
-                  setSignIn(false);
-                  setIsRegistering(false);
-                }}
-                style={{ marginLeft: "10px" }}
-              >
-                Close
-              </button>
+                <button
+                  onClick={() => {
+                    setSignIn(false);
+                    setIsRegistering(false);
+                  }}
+                  className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-3 rounded-lg text-xs sm:text-sm transition-all"
+                >
+                  Close
+                </button>
+              </div>
 
               {/* Mode Toggle Link */}
-              <div style={{ marginTop: "15px", fontSize: "14px" }}>
+              <div style={{ marginTop: "15px", fontSize: "13px" }}>
                 {isRegistering ? (
-                  <span>
+                  <span className="text-gray-600">
                     Already have an account?{" "}
                     <button
                       type="button"
@@ -729,14 +763,15 @@ function Hello(){
                         color: "blue",
                         textDecoration: "underline",
                         cursor: "pointer",
-                        padding: 0
+                        padding: 0,
+                        fontWeight: "bold"
                       }}
                     >
                       Sign In
                     </button>
                   </span>
                 ) : (
-                  <span>
+                  <span className="text-gray-600">
                     Don't have an account?{" "}
                     <button
                       type="button"
@@ -747,7 +782,8 @@ function Hello(){
                         color: "blue",
                         textDecoration: "underline",
                         cursor: "pointer",
-                        padding: 0
+                        padding: 0,
+                        fontWeight: "bold"
                       }}
                     >
                       Sign Up
@@ -761,26 +797,28 @@ function Hello(){
         )}
 
         {/* Footer Section */}
-        <div>
+        <div className="mt-8">
           <footer className="footer" style={styles.footer}>
             <div style={styles.socialIcons}>
               <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                <FaFacebook size={30} />
+                <FaFacebook size={26} />
               </a>
 
               <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                <FaInstagram size={30} />
+                <FaInstagram size={26} />
               </a>
 
               <a href="https://t.me/yourusername" target="_blank" rel="noreferrer">
-                <FaTelegram size={30} />
+                <FaTelegram size={26} />
               </a>
 
               <a href="https://tiktok.com" target="_blank" rel="noreferrer">
-                <FaTiktok size={30} />
+                <FaTiktok size={26} />
               </a>
             </div>
-            All Right Reserved, &copy; Powered by V's Business
+            <p className="text-xs sm:text-sm text-gray-700 mt-2">
+              All Right Reserved, &copy; Powered by V's Business
+            </p>
           </footer>
         </div>                
       </div>
